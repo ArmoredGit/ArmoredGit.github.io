@@ -23,7 +23,6 @@ body p img {
     padding: 6px;
     width: 30%;
     height: auto;
-    display: block;
-    margin-left: 10%;
+    margin-left: auto;
     margin-right: 10%;
 }
