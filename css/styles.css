@@ -21,7 +21,8 @@ body p img {
     border: 2px solid #19d119;
     border-radius: 4px;
     padding: 6px;
-    margin-left: auto;
-    margin-right: auto;
     width: 30%;
+    height: auto;
+    margin-left: 10%;
+    margin-right: 10%;
 }
