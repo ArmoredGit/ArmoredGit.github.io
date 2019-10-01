@@ -3,11 +3,11 @@ body{
     background-color: black;
 }
 
-.navbar{
+/*.navbar{
     align-content: center;
     text-align: center;
 }
-
+*/
 .header {
     width: 100%;
     height: auto;
@@ -33,4 +33,41 @@ body p img {
     padding: 6px;
     width: 30%;
     margin-left: 10%;
+}
+
+/* Navigation links */
+/* Style the navigation menu */
+.navbar {
+    width: 100%;
+    background-color: #010;
+    overflow: auto;
+}
+
+/* Navigation links */
+.navbar a {
+    float: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    width: 25%;
+    /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    text-align: center;
+    /* If you want the text to be centered */
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+    background-color: #555;
+}
+
+/* Style the current/active link */
+.navbar a:active {
+    background-color: #4CAF50;
+}
+
+#bannerimg {
+    width: 100%;
+    height: auto;
 }
