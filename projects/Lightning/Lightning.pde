@@ -3,8 +3,7 @@ float endX;
 float startY;
 float endY;
 float type = 1;
-float rAngle = 0;
-float yint;
+boolean left = false;
 
 void setup()
 {
@@ -12,10 +11,9 @@ void setup()
   frameRate(4);
   background(10);
   startX = 0;
-  endX = 0;
+  endX = 500;
   startY = (height/2);
   endY = (height/2);
-  yint = height/2;
   stroke(random(0, 255), random(0, 255), random(0, 255));
 }
 
@@ -77,19 +75,30 @@ void mousePressed()
 void keyPressed() {
   type *= -1;
   startX = 0;
-  endX = 0;
-  startY = 149;
-  endY = 100;
+  endX = 500;
+  startY = 100;
+  endY = 400;
+}
+
+void lineGenerater(){
+  //(((startY-endY)/(startX-endX))*X)+startY
+  //float j = ((startY-endY)/(startX-endX))
+  // float h = startY
+  if(left){
+    
+  } else {
+    
+  }
 }
 
 void angleLight(){
   float iX = startX;
   float iY = startY;
-  float fX = startY;
+  float fX = startX;
   float fY = startY;
-  while(sqrt(((fX-endX)*(fX-endX))+((fY-endY)*(fY-endY)))>height/30 && fX<width && fX>0){
+  while(sqrt(((fX-endX)*(fX-endX)+1)+((fY-endY)*(fY-endY)+1))>(height/10) && fX<width && fX>-2){
     fX+=random(height/30);
-    if(fY>((endX-startX)/(endX-startX))*fY+(height/100)+yint){
+    if(fY>(((startY-endY)/(startX-endX))*fX)+(height/100)+startY){
       fY-=random(height/30);
     } else {
       fY+=random(height/30);
@@ -98,6 +107,7 @@ void angleLight(){
     iX = fX;
     iY = fY;
   }
+  line(iX,iY,endX,endY);
 }
 
 void startLight(float iX, float iY, float fX, float fY) {
