@@ -10,7 +10,7 @@ void setup()
   size(500, 500);
   frameRate(4);
   background(10);
-  startX = 0;
+  startX = 100;
   endX = 500;
   startY = (height/2);
   endY = (height/2);
@@ -51,6 +51,7 @@ void draw()
     rect(-1, -1, width + 1, width + 1);
     ellipse(width/2.0, height/2.0, width*1.0, width*1.0);
     stroke(random(0, 250), random(0, 255), random(0, 250));
+    findInter();
     angleLight();
   } else {
     background(0);
@@ -74,9 +75,9 @@ void mousePressed()
 
 void keyPressed() {
   type *= -1;
-  startX = 0;
+  startX = 150;
   endX = 500;
-  startY = 100;
+  startY = 150;
   endY = 400;
 }
 
@@ -88,6 +89,16 @@ void lineGenerater(){
     
   } else {
     
+  }
+}
+
+void findInter(){
+  float slope = (endY-startY)/(endX-startX);
+  endX=startX+10;
+  endY=startY+(slope*10);
+  while(((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))>((endY*endY)+9) && ((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))<((endY*endY)-9)){
+    endX+=1;
+    endY+=slope;
   }
 }
 
