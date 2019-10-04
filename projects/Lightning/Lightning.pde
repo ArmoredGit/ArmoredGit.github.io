@@ -13,7 +13,7 @@ void setup()
   startX = 100;
   endX = 500;
   startY = (height/2);
-  endY = (height/2);
+  endY = (height/2)-200;
   stroke(random(0, 255), random(0, 255), random(0, 255));
 }
 
@@ -63,8 +63,8 @@ void mousePressed()
 {
   if (type == 1) {
     background(10);
-    startX = 0;
-    endX = 0;
+    startX = 2;
+    endX = 500;
     startY = (height/2);
     endY = (height/2);
     stroke(random(0, 255), random(0, 255), random(0, 255));
@@ -74,7 +74,7 @@ void mousePressed()
 }
 
 void keyPressed() {
-  type *= -1;
+  //type *= -1;
   startX = 150;
   endX = 500;
   startY = 150;
@@ -94,12 +94,16 @@ void lineGenerater(){
 
 void findInter(){
   float slope = (endY-startY)/(endX-startX);
+  print(slope);
   endX=startX+10;
   endY=startY+(slope*10);
-  while(((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))>((endY*endY)+9) && ((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))<((endY*endY)-9)){
+  while((((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))>(((endY-(width/2))*(endY-(width/2)))+20) || ((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))<(((endY-(width/2))*(endY-(width/2)))-20)) && endX<width){
     endX+=1;
     endY+=slope;
+    print(endX);
   }
+  print(endX);
+  print(endY);
 }
 
 void angleLight(){
