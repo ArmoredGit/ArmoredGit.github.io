@@ -13,7 +13,7 @@ void setup()
   startX = 100;
   endX = 500;
   startY = (height/2);
-  endY = (height/2)-200;
+  endY = (height/2)+200;
   stroke(random(0, 255), random(0, 255), random(0, 255));
 }
 
@@ -93,8 +93,15 @@ void lineGenerater(){
 }
 
 void findInter(){
-  float slope = (endY-startY)/(endX-startX);
-  print(slope);
+  float j = (endY-startY)/(endX-startX);
+  float h = (-1*j*startX)+startY;
+  float r = width/2;
+  
+  if(true){
+    endX= (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(r-r)))/(2*(j*j+1)));
+    endY= j*(endX-startX)+startY;
+  }
+  /*print(slope);
   endX=startX+10;
   endY=startY+(slope*10);
   while((((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))>(((endY-(width/2))*(endY-(width/2)))+20) || ((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))<(((endY-(width/2))*(endY-(width/2)))-20)) && endX<width){
@@ -103,7 +110,7 @@ void findInter(){
     print(endX);
   }
   print(endX);
-  print(endY);
+  print(endY);*/
 }
 
 void angleLight(){
