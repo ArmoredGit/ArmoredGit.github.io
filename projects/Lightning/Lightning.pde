@@ -10,10 +10,10 @@ void setup()
   size(500, 500);
   frameRate(1);
   background(10);
-  startX = (height/2);
-  endX = (height/2)+10;
-  startY = (height/2);
-  endY = (height/2)+10;
+  startX = (height/2)+50;
+  endX = height;
+  startY = (height/2)+50;
+  endY = (height/2)-100;
   stroke(random(0, 255), random(0, 255), random(0, 255));
 }
 
@@ -53,9 +53,9 @@ void draw()
     stroke(random(0, 250), random(0, 255), random(0, 250));
     findInter();
     //angleLight();
-    line(startX,startY,endX,endY);
+    //line(startX,startY,endX,endY);
     lineGenerater();
-    line(startX,startY,endX,endY);
+    //line(startX,startY,endX,endY);
   } else {
     background(0);
     startLight(startX, startY, endX, endY);
@@ -96,12 +96,18 @@ void lineGenerater(){
   float newh = tan(atan(tanS)-(atan(j)-atan(tanS)));
   startY = fY;
   startX = fX;
-  if(dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY)>r){
-    endX = fX-(width/10);
-    endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
-  } else {
-    endX = fX+(width/10);
-    endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
+  if(dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY)<r){
+    endX = fX-(width/2);
+    endY = ((newh*((fX-(width/2))-fX))-fX)+fY;
+  } else if(dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY)<r){
+    endX = fX+(width/2);
+    endY = ((newh*((fX+(width/2))-fX))-fX)+fY;
+  } else if(dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10))<r){
+    endY = fY-(width/2);
+    endX = ((((fY-(width/2))-fY)/newh)+fX);
+  } else if(dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10))<r){
+    endY = fY+(width/2);
+    endX = ((((fY+(width/2))-fY)/newh)+fX);
   }
 }
 
@@ -110,11 +116,13 @@ void findInter(){
   float h = (-1*j*startX)+startY;
   float r = width/2;
   if(endX>r){
-    endX = (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(r-r)))/(2*(j*j+1)));
+    endX = (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(h-r)))/(2*(j*j+1)));
     endY = j*(endX-startX)+startY;
+    print(endX);
   } else {
-    endX = (((-2*(j*h-r-j*r))-sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(r-r)))/(2*(j*j+1)));
+    endX = (((-2*(j*h-r-j*r))-sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(h-r)))/(2*(j*j+1)));
     endY = j*(endX-startX)+startY;
+    print(endX);
   }
 }
 
