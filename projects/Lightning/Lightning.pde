@@ -146,7 +146,7 @@ void angleLight(){
     }  else  {
       fX -= random(height/30);
     }
-    if(fY>endY || fY > ((fX*j)+h)){
+    if(fY>endY && fY >= ((fX*j)+h)-(height/15)){
       fY -= random(height/30);
     } else {
       fY += random(height/30);
