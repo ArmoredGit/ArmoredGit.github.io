@@ -56,7 +56,12 @@ void draw()
     endX = mouseX;
     endY = mouseY;
     findInter();
-    //angleLight();
+    angleLight();
+    line(startX,startY,endX,endY);
+    lineGenerater();
+    line(startX,startY,endX,endY);
+    findInter();
+    angleLight();
     line(startX,startY,endX,endY);
     lineGenerater();
     line(startX,startY,endX,endY);
@@ -93,7 +98,7 @@ void lineGenerater(){
   float r = width/2;
   float fX = endX;
   float fY = endY;
-  float tanS = ((fX-r)/(sqrt(((fX-r)*(fX-r))-(r*r))));
+  float tanS = ((fX-r)/(sqrt((r*r)-((fX-r)*(fX-r)))));
   if(fY>r){
     tanS*=-1;
   }
@@ -101,17 +106,17 @@ void lineGenerater(){
   startY = fY;
   startX = fX;
   if(dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY)<r){
-    endX = fX-(width/2);
-    endY = ((newh*((fX-(width/2))-fX))-fX)+fY;
+    endX = fX-(width/10);
+    endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
   } else if(dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY)<r){
-    endX = fX+(width/2);
-    endY = ((newh*((fX+(width/2))-fX))-fX)+fY;
+    endX = fX+(width/10);
+    endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
   } else if(dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10))<r){
-    endY = fY-(width/2);
-    endX = ((((fY-(width/2))-fY)/newh)+fX);
+    endY = fY-(width/10);
+    endX = ((((fY-(width/10))-fY)/newh)+fX);
   } else if(dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10))<r){
-    endY = fY+(width/2);
-    endX = ((((fY+(width/2))-fY)/newh)+fX);
+    endY = fY+(width/10);
+    endX = ((((fY+(width/10))-fY)/newh)+fX);
   }
 }
 
@@ -122,11 +127,9 @@ void findInter(){
   if(endX>startX){
     endX = (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(h-r)))/(2*(j*j+1)));
     endY = j*(endX-startX)+startY;
-    print(endX);
   } else {
     endX = (((-2*(j*h-r-j*r))-sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(h-r)))/(2*(j*j+1)));
     endY = j*(endX-startX)+startY;
-    print(endX);
   }
 }
 
@@ -138,12 +141,12 @@ void angleLight(){
   float j = (endY-startY)/(endX-startX);
   float h = (-1*j*startX)+startY;
   while(sqrt(((fX-endX)*(fX-endX)+1)+((fY-endY)*(fY-endY)+1))>(height/10) && fX<width && fX>-2){
-    if(endX>startX){
+    if(endX>fX && fX <= ((fY-h)/j)+(height/15)){
       fX += random(height/30);
     }  else  {
       fX -= random(height/30);
     }
-    if(fY>(j*fX)+h){
+    if(fY>endY || fY > ((fX*j)+h)){
       fY -= random(height/30);
     } else {
       fY += random(height/30);
