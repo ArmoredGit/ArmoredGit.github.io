@@ -10,7 +10,7 @@ void setup()
   size(500, 500);
   frameRate(1);
   background(10);
-  startX = (height/2)+50;
+  startX = (height/2)+100;
   endX = height;
   startY = (height/2)+50;
   endY = (height/2)-100;
@@ -51,11 +51,15 @@ void draw()
     rect(-1, -1, width + 1, width + 1);
     ellipse(width/2.0, height/2.0, width*1.0, width*1.0);
     stroke(random(0, 250), random(0, 255), random(0, 250));
+    startX = (height/2)+100;
+    startY = (height/2)+50;
+    endX = mouseX;
+    endY = mouseY;
     findInter();
     //angleLight();
-    //line(startX,startY,endX,endY);
+    line(startX,startY,endX,endY);
     lineGenerater();
-    //line(startX,startY,endX,endY);
+    line(startX,startY,endX,endY);
   } else {
     background(0);
     startLight(startX, startY, endX, endY);
@@ -89,7 +93,7 @@ void lineGenerater(){
   float r = width/2;
   float fX = endX;
   float fY = endY;
-  float tanS = ((fX-r)/(sqrt(((fX-r)*(fX-r))+(r*r))));
+  float tanS = ((fX-r)/(sqrt(((fX-r)*(fX-r))-(r*r))));
   if(fY>r){
     tanS*=-1;
   }
@@ -115,7 +119,7 @@ void findInter(){
   float j = (endY-startY)/(endX-startX);
   float h = (-1*j*startX)+startY;
   float r = width/2;
-  if(endX>r){
+  if(endX>startX){
     endX = (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(h-r)))/(2*(j*j+1)));
     endY = j*(endX-startX)+startY;
     print(endX);
