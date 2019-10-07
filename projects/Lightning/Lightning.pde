@@ -8,12 +8,12 @@ boolean left = false;
 void setup()
 {
   size(500, 500);
-  frameRate(4);
+  frameRate(1);
   background(10);
-  startX = 100;
-  endX = 500;
+  startX = (height/2);
+  endX = (height/2)+10;
   startY = (height/2);
-  endY = (height/2)+200;
+  endY = (height/2)+10;
   stroke(random(0, 255), random(0, 255), random(0, 255));
 }
 
@@ -52,7 +52,10 @@ void draw()
     ellipse(width/2.0, height/2.0, width*1.0, width*1.0);
     stroke(random(0, 250), random(0, 255), random(0, 250));
     findInter();
-    angleLight();
+    //angleLight();
+    line(startX,startY,endX,endY);
+    lineGenerater();
+    line(startX,startY,endX,endY);
   } else {
     background(0);
     startLight(startX, startY, endX, endY);
@@ -82,13 +85,23 @@ void keyPressed() {
 }
 
 void lineGenerater(){
-  //(((startY-endY)/(startX-endX))*X)+startY
-  //float j = ((startY-endY)/(startX-endX))
-  // float h = startY
-  if(left){
-    
+  float j = (endY-startY)/(endX-startX);
+  float r = width/2;
+  float fX = endX;
+  float fY = endY;
+  float tanS = ((fX-r)/(sqrt(((fX-r)*(fX-r))+(r*r))));
+  if(fY>r){
+    tanS*=-1;
+  }
+  float newh = tan(atan(tanS)-(atan(j)-atan(tanS)));
+  startY = fY;
+  startX = fX;
+  if(dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY)>r){
+    endX = fX-(width/10);
+    endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
   } else {
-    
+    endX = fX+(width/10);
+    endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
   }
 }
 
@@ -96,21 +109,13 @@ void findInter(){
   float j = (endY-startY)/(endX-startX);
   float h = (-1*j*startX)+startY;
   float r = width/2;
-  
-  if(true){
-    endX= (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(r-r)))/(2*(j*j+1)));
-    endY= j*(endX-startX)+startY;
+  if(endX>r){
+    endX = (((-2*(j*h-r-j*r))+sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(r-r)))/(2*(j*j+1)));
+    endY = j*(endX-startX)+startY;
+  } else {
+    endX = (((-2*(j*h-r-j*r))-sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(r-r)))/(2*(j*j+1)));
+    endY = j*(endX-startX)+startY;
   }
-  /*print(slope);
-  endX=startX+10;
-  endY=startY+(slope*10);
-  while((((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))>(((endY-(width/2))*(endY-(width/2)))+20) || ((endX-(width/2))*(endX-(width/2))*-1)+((width/2)*(width/2))<(((endY-(width/2))*(endY-(width/2)))-20)) && endX<width){
-    endX+=1;
-    endY+=slope;
-    print(endX);
-  }
-  print(endX);
-  print(endY);*/
 }
 
 void angleLight(){
@@ -118,13 +123,24 @@ void angleLight(){
   float iY = startY;
   float fX = startX;
   float fY = startY;
+  float j = (endY-startY)/(endX-startX);
+  float h = (-1*j*startX)+startY;
   while(sqrt(((fX-endX)*(fX-endX)+1)+((fY-endY)*(fY-endY)+1))>(height/10) && fX<width && fX>-2){
-    fX+=random(height/30);
-    if(fY>(((startY-endY)/(startX-endX))*fX)+(height/100)+startY){
-      fY-=random(height/30);
-    } else {
-      fY+=random(height/30);
+    if(endX>startX){
+      fX += random(height/30);
+    }  else  {
+      fX -= random(height/30);
     }
+    if(fY>(j*fX)+h){
+      fY -= random(height/30);
+    } else {
+      fY += random(height/30);
+    }
+    /*if(fY>(j*fX)+h+(height/10)){
+      fY-=(height/15);
+    } else if(fY>(j*fX)+h-(height/10)){
+      fY+=(height/15);
+    }*/
     line(iX,iY,fX,fY);
     iX = fX;
     iY = fY;
