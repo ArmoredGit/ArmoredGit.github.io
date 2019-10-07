@@ -8,7 +8,7 @@ boolean left = false;
 void setup()
 {
   size(500, 500);
-  frameRate(1);
+  frameRate(5);
   background(10);
   startX = (height/2)+100;
   endX = height;
@@ -51,20 +51,20 @@ void draw()
     rect(-1, -1, width + 1, width + 1);
     ellipse(width/2.0, height/2.0, width*1.0, width*1.0);
     stroke(random(0, 250), random(0, 255), random(0, 250));
-    startX = (height/2)+100;
-    startY = (height/2)+50;
-    endX = mouseX;
-    endY = mouseY;
+    //startX = (height/2)-150;
+    //startY = (height/2)-150;
+    //endX = mouseX;
+    //endY = mouseY;
     findInter();
     angleLight();
-    line(startX,startY,endX,endY);
+    //line(startX,startY,endX,endY);
     lineGenerater();
-    line(startX,startY,endX,endY);
-    findInter();
-    angleLight();
-    line(startX,startY,endX,endY);
-    lineGenerater();
-    line(startX,startY,endX,endY);
+    //line(startX,startY,endX,endY);
+    //findInter();
+    //angleLight();
+    //line(startX,startY,endX,endY);
+    //lineGenerater();
+    //line(startX,startY,endX,endY);
   } else {
     background(0);
     startLight(startX, startY, endX, endY);
@@ -103,21 +103,26 @@ void lineGenerater(){
     tanS*=-1;
   }
   float newh = tan(atan(tanS)-(atan(j)-atan(tanS)));
-  startY = fY;
-  startX = fX;
-  if(dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY)<r){
+  float one = dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY);
+  float two = dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY);
+  float three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
+  float four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
+  
+  if(one < two && one < three && one < four){
     endX = fX-(width/10);
     endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
-  } else if(dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY)<r){
+  } else if(one > two && two < three && two < four){
     endX = fX+(width/10);
     endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
-  } else if(dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10))<r){
+  } else if(three < two && one > three && three < four){
     endY = fY-(width/10);
     endX = ((((fY-(width/10))-fY)/newh)+fX);
-  } else if(dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10))<r){
+  } else if(four < two && four < three && one > four){
     endY = fY+(width/10);
     endX = ((((fY+(width/10))-fY)/newh)+fX);
   }
+  startY = fY;
+  startX = fX;
 }
 
 void findInter(){
@@ -141,14 +146,14 @@ void angleLight(){
   float j = (endY-startY)/(endX-startX);
   float h = (-1*j*startX)+startY;
   while(sqrt(((fX-endX)*(fX-endX)+1)+((fY-endY)*(fY-endY)+1))>(height/10) && fX<width && fX>-2){
-    if(endX>fX && fX <= ((fY-h)/j)+(height/15)){
+    if(endX>fX && fX <= ((fY-h)/j)+(height/20)){
       fX += random(height/30);
-    }  else  {
+    }  else if(endX<fX && fX >= ((fY-h)/j)-(height/20)){
       fX -= random(height/30);
     }
-    if(fY>endY && fY >= ((fX*j)+h)-(height/15)){
+    if(fY>endY && fY >= ((fX*j)+h)-(height/20)){
       fY -= random(height/30);
-    } else {
+    } else if(fY<endY && fY <= ((fX*j)+h)+(height/20)){
       fY += random(height/30);
     }
     /*if(fY>(j*fX)+h+(height/10)){
