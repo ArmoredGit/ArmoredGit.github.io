@@ -4,14 +4,13 @@ float startY;
 float endY;
 float type = 1;
 boolean left = false;
-int spin = 1;
 
 void setup()
 {
   size(500, 500);
-  frameRate(1);
+  frameRate(10);
   background(10);
-  startX = (height/2)+100;
+  startX = (height/2)+83;
   endX = height;
   startY = (height/2)+50;
   endY = (height/2)-100;
@@ -52,21 +51,16 @@ void draw()
     rect(-1, -1, width + 1, width + 1);
     ellipse(width/2.0, height/2.0, width*1.0, width*1.0);
     stroke(random(0, 250), random(0, 255), random(0, 250));
-    startX = (height/2)-150;
-    startY = (height/2)-150;
-    endX = mouseX;
-    endY = mouseY;
+    //startX = (height/2)-150;
+    //startY = (height/2)-150;
+    //endX = mouseX;
+    //endY = mouseY;
     findInter();
-    //angleLight();
-    line(startX,startY,endX,endY);
-    lineGenerater(spin);
+    angleLight();
+    //line(startX,startY,endX,endY);
+    lineGenerater(0);
     //findInter();
-    line(startX,startY,endX,endY);
-    print(spin);
-    spin++;
-    if(spin >= 5){
-      spin = 1;
-    }
+    //line(startX,startY,endX,endY);
   } else {
     background(0);
     startLight(startX, startY, endX, endY);
@@ -110,17 +104,17 @@ void lineGenerater(int force){
   float three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
   float four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
   print(newh);
-  if(newh<1 && newh>-1){
-    if(one < two){
-      endX = fX-(width/10);
-      endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
-      print(1);
-    } else if(one > two){
-      endX = fX+(width/10);
-      endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
-      print(2);
-    } 
-  }else if(newh>1 || newh<-1){
+  //if(newh<1 && newh>-1){
+  //  if(one < two){
+  //    endX = fX-(width/10);
+  //    endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
+  //    print(1);
+  //  } else if(one > two){
+  //    endX = fX+(width/10);
+  //    endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
+  //    print(2);
+  //  } 
+  //}else if(newh>1 || newh<-1){
     if(three < four){
       endY = fY-(width/10);
       endX = ((((fY-(width/10))-fY)/newh)+fX);
@@ -130,7 +124,7 @@ void lineGenerater(int force){
       endX = ((((fY+(width/10))-fY)/newh)+fX);
       print(4);
     }
-  }
+  //}
   if(force == 1){
     endX = fX-(width/10);
     endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
