@@ -44,7 +44,7 @@ function lineGenerater(){
   if(fY>r){
     tanS*=-1;
   }
-  var newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((1/360)*PI));
+  var newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((2/180)*PI)-random((4/180)*PI));
   var three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
   var four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
   print(newh);
