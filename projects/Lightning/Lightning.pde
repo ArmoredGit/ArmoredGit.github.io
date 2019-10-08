@@ -8,7 +8,7 @@ boolean left = false;
 void setup()
 {
   size(500, 500);
-  frameRate(5);
+  frameRate(1);
   background(10);
   startX = (height/2)+100;
   endX = height;
@@ -51,15 +51,16 @@ void draw()
     rect(-1, -1, width + 1, width + 1);
     ellipse(width/2.0, height/2.0, width*1.0, width*1.0);
     stroke(random(0, 250), random(0, 255), random(0, 250));
-    //startX = (height/2)-150;
-    //startY = (height/2)-150;
-    //endX = mouseX;
-    //endY = mouseY;
+    startX = (height/2)-150;
+    startY = (height/2)-150;
+    endX = mouseX;
+    endY = mouseY;
     findInter();
-    angleLight();
-    //line(startX,startY,endX,endY);
-    lineGenerater();
-    //line(startX,startY,endX,endY);
+    //angleLight();
+    line(startX,startY,endX,endY);
+    lineGenerater(3);
+    findInter();
+    line(startX,startY,endX,endY);
     //findInter();
     //angleLight();
     //line(startX,startY,endX,endY);
@@ -93,7 +94,7 @@ void keyPressed() {
   endY = 400;
 }
 
-void lineGenerater(){
+void lineGenerater(int force){
   float j = (endY-startY)/(endX-startX);
   float r = width/2;
   float fX = endX;
@@ -111,16 +112,34 @@ void lineGenerater(){
   if(one < two && one < three && one < four){
     endX = fX-(width/10);
     endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
+    print(1);
   } else if(one > two && two < three && two < four){
     endX = fX+(width/10);
     endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
+    print(2);
   } else if(three < two && one > three && three < four){
     endY = fY-(width/10);
     endX = ((((fY-(width/10))-fY)/newh)+fX);
-  } else if(four < two && four < three && one > four){
+    print(3);
+  } else /*if(four < two && four < three && one > four)*/{
+    endY = fY+(width/10);
+    endX = ((((fY+(width/10))-fY)/newh)+fX);
+    print(4);
+  }
+  if(force == 1){
+    endX = fX-(width/10);
+    endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
+  } else if(force == 2){
+    endX = fX+(width/10);
+    endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
+  } else if(force == 3){
+    endY = fY-(width/10);
+    endX = ((((fY-(width/10))-fY)/newh)+fX);
+  } else if(force == 4){
     endY = fY+(width/10);
     endX = ((((fY+(width/10))-fY)/newh)+fX);
   }
+  
   startY = fY;
   startX = fX;
 }
