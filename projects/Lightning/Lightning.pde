@@ -98,12 +98,13 @@ void lineGenerater(int force){
   if(fY>r){
     tanS*=-1;
   }
-  float newh = tan(atan(tanS)-(atan(j)-atan(tanS)));
+  float newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((2/180)*PI));
+  while(dist(fX,fY,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10))<width/15)
+    newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((2/180)*PI));
   float one = dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY);
   float two = dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY);
   float three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
   float four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
-  print(newh);
   //if(newh<1 && newh>-1){
   //  if(one < two){
   //    endX = fX-(width/10);
