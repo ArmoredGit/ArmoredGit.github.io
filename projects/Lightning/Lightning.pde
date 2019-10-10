@@ -8,7 +8,7 @@ float count;
 void setup()
 {
   size(500, 500);
-  frameRate(10);
+  frameRate(100);
   background(10);
   startX = (height/2)+83;
   endX = height;
@@ -63,7 +63,7 @@ void draw()
     //findInter();
     //line(startX,startY,endX,endY);
     count++;
-    if(count > 500){
+    if(count > 5000){
       keyPressed();
     }
   } else {
@@ -104,12 +104,24 @@ void lineGenerater(){
     tanS*=-1;
   }
   float newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((2/180)*PI));
-  while(dist(fX,fY,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10))<width/15)
+  float three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
+  float four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
+  if(three < four){
+      endY = fY-(width/10);
+      endX = ((((fY-(width/10))-fY)/newh)+fX);
+    } else if(four < three){
+      endY = fY+(width/10);
+      endX = ((((fY+(width/10))-fY)/newh)+fX);
+    }
+  startY = fY;
+  startX = fX;
+  findInter();
+  while(dist(fX,fY,endX,endY)<=(width/10)){
     newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((2/180)*PI));
   //float one = dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY);
   //float two = dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY);
-  float three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
-  float four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
+  three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
+  four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
   //if(newh<1 && newh>-1){
   //  if(one < two){
   //    endX = fX-(width/10);
@@ -142,9 +154,11 @@ void lineGenerater(){
     //endY = fY+(width/10);
     //endX = ((((fY+(width/10))-fY)/newh)+fX);
   //}
-  
-  startY = fY;
-  startX = fX;
+  print("noooo!");
+  findInter();
+  }
+  print("ln");
+  print(count);
 }
 
 void findInter(){
@@ -158,6 +172,7 @@ void findInter(){
     endX = (((-2*(j*h-r-j*r))-sqrt((2*(j*h-r-j*r))*(2*(j*h-r-j*r))-4*(j*j+1)*(h-r)*(h-r)))/(2*(j*j+1)));
     endY = j*(endX-startX)+startY;
   }
+  print("int");
 }
 
 void angleLight(){
@@ -188,6 +203,7 @@ void angleLight(){
     iY = fY;
   }
   line(iX,iY,endX,endY);
+  println("light");
 }
 
 void startLight(float iX, float iY, float fX, float fY) {
