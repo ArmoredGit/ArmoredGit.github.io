@@ -8,7 +8,7 @@ float count;
 void setup()
 {
   size(500, 500);
-  frameRate(100);
+  frameRate(10);
   background(10);
   startX = (height/2)+83;
   endX = height;
