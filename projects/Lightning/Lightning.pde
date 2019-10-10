@@ -3,7 +3,7 @@ float endX;
 float startY;
 float endY;
 float type = 1;
-boolean left = false;
+float count;
 
 void setup()
 {
@@ -15,6 +15,7 @@ void setup()
   startY = (height/2)+50;
   endY = (height/2)-100;
   stroke(random(0, 255), random(0, 255), random(0, 255));
+  count = 1;
 }
 
 void draw()
@@ -58,9 +59,13 @@ void draw()
     findInter();
     angleLight();
     //line(startX,startY,endX,endY);
-    lineGenerater(0);
+    lineGenerater();
     //findInter();
     //line(startX,startY,endX,endY);
+    count++;
+    if(count > 500){
+      keyPressed();
+    }
   } else {
     background(0);
     startLight(startX, startY, endX, endY);
@@ -89,7 +94,7 @@ void keyPressed() {
   endY = 400;
 }
 
-void lineGenerater(int force){
+void lineGenerater(){
   float j = (endY-startY)/(endX-startX);
   float r = width/2;
   float fX = endX;
@@ -101,8 +106,8 @@ void lineGenerater(int force){
   float newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((2/180)*PI));
   while(dist(fX,fY,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10))<width/15)
     newh = tan(atan(tanS)-(atan(j)-atan(tanS))+((1/180)*PI)-random((2/180)*PI));
-  float one = dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY);
-  float two = dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY);
+  //float one = dist(r,r,fX-(width/10),((newh*((fX-(width/10))-fX))-fX)+fY);
+  //float two = dist(r,r,fX+(width/10),((newh*((fX+(width/10))-fX))-fX)+fY);
   float three = dist(r,r,((((fY-(width/10))-fY)/newh)+fX),fY-(width/10));
   float four = dist(r,r,((((fY+(width/10))-fY)/newh)+fX),fY+(width/10));
   //if(newh<1 && newh>-1){
@@ -119,26 +124,24 @@ void lineGenerater(int force){
     if(three < four){
       endY = fY-(width/10);
       endX = ((((fY-(width/10))-fY)/newh)+fX);
-      print(3);
     } else if(four < three){
       endY = fY+(width/10);
       endX = ((((fY+(width/10))-fY)/newh)+fX);
-      print(4);
     }
   //}
-  if(force == 1){
-    endX = fX-(width/10);
-    endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
-  } else if(force == 2){
-    endX = fX+(width/10);
-    endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
-  } else if(force == 3){
-    endY = fY-(width/10);
-    endX = ((((fY-(width/10))-fY)/newh)+fX);
-  } else if(force == 4){
-    endY = fY+(width/10);
-    endX = ((((fY+(width/10))-fY)/newh)+fX);
-  }
+  //if(force == 1){
+    //endX = fX-(width/10);
+    //endY = ((newh*((fX-(width/10))-fX))-fX)+fY;
+  //} else if(force == 2){
+    //endX = fX+(width/10);
+    //endY = ((newh*((fX+(width/10))-fX))-fX)+fY;
+  //} else if(force == 3){
+    //endY = fY-(width/10);
+    //endX = ((((fY-(width/10))-fY)/newh)+fX);
+  //} else if(force == 4){
+    //endY = fY+(width/10);
+    //endX = ((((fY+(width/10))-fY)/newh)+fX);
+  //}
   
   startY = fY;
   startX = fX;
