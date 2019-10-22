@@ -11,13 +11,13 @@ void setup()
   rectMode(CENTER);
   ellipseMode(CENTER);
   noStroke();
-  numDiceX = 4;
-  numDiceY = 3;
-  numDice = numDiceX*numDiceY;
+  numDiceX = 5;
+  numDiceY = 5;
+  numDice = 25;
   diceWidth = ((numDiceX>numDiceY)?width/numDiceX:height/numDiceY)-4;
   dice = new Die[(int)numDice];
   for(int i = 0; i < numDiceX*numDiceY; i+=numDiceY){
-    for(int j = 0; j < numDiceY; j++){
+    for(int j = 0; (j < numDiceY && j+i< numDice); j++){
       dice[(int)(i+j)] = new Die((int)((width/(numDiceX*2))*((2*i/numDiceY)+1)),(int)((height/(numDiceY*2))*((2*j)+1)));
     }
   }
@@ -50,31 +50,28 @@ class Die //models one single dice cube
   }
   void show()
   {
-    fill(255);
-    rect(dieX,dieY,diceWidth,diceWidth,2);
+    fill(250);
+    rect(dieX,dieY,diceWidth,diceWidth,diceWidth/5);
     fill(0);
     switch(num){
-      case 5:
-        ellipse(dieX+diceWidth/3,dieY-diceWidth/3,10,10);
-        ellipse(dieX-diceWidth/3,dieY+diceWidth/3,10,10);
-      case 3: 
-        ellipse(dieX-diceWidth/3,dieY-diceWidth/3,10,10);
-        ellipse(dieX+diceWidth/3,dieY+diceWidth/3,10,10);
-      case 1: 
-        ellipse(dieX,dieY,10,10);
-        break;
       case 6:
-        ellipse(dieX,dieY-diceWidth/3,10,10);
-        ellipse(dieX,dieY+diceWidth/3,10,10);
+        ellipse(dieX,dieY-diceWidth/3,diceWidth/5,diceWidth/5);
+        ellipse(dieX,dieY+diceWidth/3,diceWidth/5,diceWidth/5);
       case 4:
-        ellipse(dieX+diceWidth/3,dieY-diceWidth/3,10,10);
-        ellipse(dieX-diceWidth/3,dieY+diceWidth/3,10,10);
+        ellipse(dieX-diceWidth/3,dieY-diceWidth/3,diceWidth/5,diceWidth/5);
+        ellipse(dieX+diceWidth/3,dieY+diceWidth/3,diceWidth/5,diceWidth/5);
       case 2: 
-        ellipse(dieX-diceWidth/3,dieY-diceWidth/3,10,10);
-        ellipse(dieX+diceWidth/3,dieY+diceWidth/3,10,10);
+        ellipse(dieX+diceWidth/3,dieY-diceWidth/3,diceWidth/5,diceWidth/5);
+        ellipse(dieX-diceWidth/3,dieY+diceWidth/3,diceWidth/5,diceWidth/5);
         break;
+      case 5:
+        ellipse(dieX+diceWidth/3,dieY-diceWidth/3,diceWidth/5,diceWidth/5);
+        ellipse(dieX-diceWidth/3,dieY+diceWidth/3,diceWidth/5,diceWidth/5);
+      case 3: 
+        ellipse(dieX-diceWidth/3,dieY-diceWidth/3,diceWidth/5,diceWidth/5);
+        ellipse(dieX+diceWidth/3,dieY+diceWidth/3,diceWidth/5,diceWidth/5);
       default: 
-        ellipse(dieX,dieY,10,10);
+        ellipse(dieX,dieY,diceWidth/5,diceWidth/5);
         break;
         
     }
