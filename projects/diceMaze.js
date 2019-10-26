@@ -8,7 +8,7 @@ var walls;
 
 function setup()
 {
-  createCanvas(window.innerWidth, window.innerHeight);
+  createCanvas(window.innerWidth, window.innerHeight-20);
   //noLoop();
   frameRate(5);
   rectMode(CENTER);
@@ -118,13 +118,6 @@ function draw()
     setup();
   }
 }
-
-function mousePressed()
-{
-  //dice.forEach(x => x.exp = true);
-  redraw();
-}
-
 
 class Die 
 {
