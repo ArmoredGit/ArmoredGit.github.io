@@ -1,6 +1,8 @@
 # ArmoredGit.github.io
 advanced computer science portfolio website 
 
+
+###Dice Maze Project
 ```
 var numDiceX;
 var numDiceY;
@@ -179,3 +181,12 @@ class Die
 ```
 
 Here's how it works:
+first a random cell on a 40x20 grid is selected,
+a dice is rolled as **floor** in that cell,
+all 4 adjacent cells are added to a *posible wall* list,
+the roll of each previous dice determines which *posible wall* to roll next,
+if a dice is rolled adjacent to 2 or more **floor** dice it is a wall dice,
+else it is flore and all adjacent square not in the *posible wall* list are added,
+it continues to roll untill the maze is filled, then reset.
+
+
