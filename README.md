@@ -2,7 +2,7 @@
 advanced computer science portfolio website 
 
 
-###Dice Maze Project
+### Dice Maze Project
 ```
 var numDiceX;
 var numDiceY;
