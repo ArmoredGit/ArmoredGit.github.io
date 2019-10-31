@@ -2,6 +2,7 @@ int numDice;
 float diceWidth;
 Die[] dice;
 Ship me;
+boolean keyp;
 
 void setup()
 {
@@ -17,10 +18,11 @@ void setup()
   numDice = 6;
   dice = new Die[(int)numDice];
   me = new Ship();
-  for(int i = 0; i < dice.length;i++){
-    dice[i] = new Die(200*i,300);
+  keyp = false;
+  for (int i = 0; i < dice.length; i++) {
+    dice[i] = new Die(200*i, 300);
   }
-  for(Die x : dice)
+  for (Die x : dice)
     x.roll();
 }
 void draw()
@@ -33,18 +35,44 @@ void draw()
   text("⚂⚃⚅⚁⚂⚂⚁⚂⚃⚂⚅⚃", width/2, height/4); 
   text("⚂⚃⚄⚅⚁⚅⚂⚂⚁⚄⚃⚂", width/2, 3*height/4); 
   noFill();
-  for(Die x : dice)
+  for (Die x : dice)
     x.show();
   me.show();
   //walls.forEach(x => print(x));
   //background(0);
   //for(Die x : dice)
   //  x.roll();
+  if (keyp) {
+    switch(key) {
+    case 'a':
+      me.rotation -= 0.1;
+      break;
+    case 'd':
+      me.rotation += 0.1;
+      break;
+    case 'w':
+      me.shipX += 10*cos(me.rotation);
+      me.shipY += 10*sin(me.rotation);
+      break;
+    default:
+      break;
+    }
+  }
 }
 
 void mousePressed()
 {
   redraw();
+}
+
+void keyPressed()
+{
+  keyp = true;
+}
+
+void keyReleased() 
+{
+  keyp = false;
 }
 
 class Ship
@@ -58,30 +86,22 @@ class Ship
     shipY = 100;
     rotation = 0;
   }
-  
+
   void show()
   {
-    if(keyPressed){
-      switch(key){
-        case 'a':
-          rotation -= 0.1;
-          break;
-        case 'd':
-          rotation += 0.1;
-          break;
-        case 'w':
-          shipX += 10*cos(rotation);
-          shipY += 10*sin(rotation);
-          break;
-        default:
-          break;
-      }
-    }
     pushMatrix();
     translate(shipX, shipY);
     rotate(rotation);
-    triangle(50,0,-50,-25,-50,25);
+    triangle(50, 0, -50, -25, -50, 25);
     popMatrix();
+    if (shipX>width)
+      shipX = 0;
+    if(shipX<0)
+      shipX = width;
+    if (shipY>height)
+      shipY = 0;
+    if(shipY<0)
+      shipY = height;
   }
 }
 
@@ -100,8 +120,8 @@ class Die //models one single dice cube
     dieY = y;
     num = (int)random(1, 7);
     angle = 0.1;
-    vx = random(0,10);
-    vy = random(0,10);
+    vx = random(0, 10);
+    vy = random(0, 10);
     wit = diceWidth;
   }
   void roll()
@@ -115,39 +135,35 @@ class Die //models one single dice cube
     translate(dieX, dieY);
     rotate(angle);
     angle+=.1;
-      noFill();
-      rect(0, 0, wit, wit, wit/5);
-      switch(num) {
-      case 6:
-        ellipse(0, 0-wit/3, wit/5, wit/5);
-        ellipse(0, 0+wit/3, wit/5, wit/5);
-      case 4:
-        ellipse(0-wit/3, 0-wit/3, wit/5, wit/5);
-        ellipse(0+wit/3, 0+wit/3, wit/5, wit/5);
-      case 2: 
-        ellipse(0+wit/3, 0-wit/3, wit/5, wit/5);
-        ellipse(0-wit/3, 0+wit/3, wit/5, wit/5);
-        break;
-      case 5:
-        ellipse(0+wit/3, 0-wit/3, wit/5, wit/5);
-        ellipse(0-wit/3, 0+wit/3, wit/5, wit/5);
-      case 3: 
-        ellipse(0-wit/3, 0-wit/3, wit/5, wit/5);
-        ellipse(0+wit/3, 0+wit/3, wit/5, wit/5);
-      default: 
-        ellipse(0, 0, wit/5, wit/5);
-        break;
-      }
+    noFill();
+    rect(0, 0, wit, wit, wit/5);
+    switch(num) {
+    case 6:
+      ellipse(0, 0-wit/3, wit/5, wit/5);
+      ellipse(0, 0+wit/3, wit/5, wit/5);
+    case 4:
+      ellipse(0-wit/3, 0-wit/3, wit/5, wit/5);
+      ellipse(0+wit/3, 0+wit/3, wit/5, wit/5);
+    case 2: 
+      ellipse(0+wit/3, 0-wit/3, wit/5, wit/5);
+      ellipse(0-wit/3, 0+wit/3, wit/5, wit/5);
+      break;
+    case 5:
+      ellipse(0+wit/3, 0-wit/3, wit/5, wit/5);
+      ellipse(0-wit/3, 0+wit/3, wit/5, wit/5);
+    case 3: 
+      ellipse(0-wit/3, 0-wit/3, wit/5, wit/5);
+      ellipse(0+wit/3, 0+wit/3, wit/5, wit/5);
+    default: 
+      ellipse(0, 0, wit/5, wit/5);
+      break;
+    }
     popMatrix();
     dieX += vx;
     dieY += vy;
-    if(dieX>width)
-     dieX = 0;
-    if(dieX<0)
-      dieX = width;
-    if(dieY>height)
-     dieY = 0;
-    if(dieY<0)
-      dieY = height;
+    if (dieX>width || dieX<0)
+      vx *= -1;
+    if (dieY>height || dieY<0)
+      vy *= -1;
   }
 }
