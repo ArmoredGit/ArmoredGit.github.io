@@ -1,12 +1,16 @@
 int numDice;
 float diceWidth;
-Die[] dice;
+ArrayList<Die> dice;
+ArrayList<DerpDot> dots;
 Ship me;
-boolean keyp;
+boolean type1;
+boolean type2;
+boolean type3;
+boolean lose;
 
 void setup()
 {
-  size(1000, 800);
+  size(1400, 800);
   //noLoop();
   //frameRate(5);
   stroke(255);
@@ -15,64 +19,135 @@ void setup()
   rectMode(CENTER);
   ellipseMode(CENTER);
   diceWidth = 100;
-  numDice = 6;
-  dice = new Die[(int)numDice];
+  numDice = 8;
+  dice = new ArrayList<Die>();
+  dots = new ArrayList<DerpDot>();
   me = new Ship();
-  keyp = false;
-  for (int i = 0; i < dice.length; i++) {
-    dice[i] = new Die(200*i, 300);
+  type1 = false;
+  type2 = false;
+  type3 = false;
+  lose = false;
+  for (int i = 0; i < numDice; i++) {
+    dice.add(new Die(200*i, 300));
   }
   for (Die x : dice)
     x.roll();
 }
 void draw()
 {
-  background(0);
-  fill(random(0, 100), random(0, 100), random(0, 100));
-  textSize(floor(height/4)); 
-  textAlign(CENTER, CENTER);
-  text("⚅⚅ ⚅ Dice Dodge ⚅ ⚅⚅", width/2, height/2); 
-  text("⚂⚃⚅⚁⚂⚂⚁⚂⚃⚂⚅⚃", width/2, height/4); 
-  text("⚂⚃⚄⚅⚁⚅⚂⚂⚁⚄⚃⚂", width/2, 3*height/4); 
-  noFill();
-  for (Die x : dice)
-    x.show();
-  me.show();
-  //walls.forEach(x => print(x));
-  //background(0);
-  //for(Die x : dice)
-  //  x.roll();
-  if (keyp) {
-    switch(key) {
-    case 'a':
-      me.rotation -= 0.1;
-      break;
-    case 'd':
-      me.rotation += 0.1;
-      break;
-    case 'w':
-      me.shipX += 10*cos(me.rotation);
-      me.shipY += 10*sin(me.rotation);
-      break;
-    default:
-      break;
+  if (lose) {
+    fill(200,0,40);
+    text("⚅⚅ ⚅ You Lost ⚅ ⚅⚅", width/2, height/2); 
+    text("⚂⚃⚅⚁⚂⚂⚁⚂⚃⚂⚅⚃", width/2, height/4); 
+    text("⚂⚃⚄⚅⚁⚅⚂⚂⚁⚄⚃⚂", width/2, 3*height/4); 
+  } else {
+    background(0);
+    for (int i = 0; i < dice.size(); i++) {
+      if (dice.get(i).dead)
+        dice.remove(i);
     }
+    fill(random(0, 100), random(0, 100), random(0, 100));
+    textSize(floor(height/4)); 
+    textAlign(CENTER, CENTER);
+    text("⚅⚅ ⚅ Dice Dodge ⚅ ⚅⚅", width/2, height/2); 
+    text("⚂⚃⚅⚁⚂⚂⚁⚂⚃⚂⚅⚃", width/2, height/4); 
+    text("⚂⚃⚄⚅⚁⚅⚂⚂⚁⚄⚃⚂", width/2, 3*height/4); 
+    noFill();
+    for (Die x : dice)
+      x.show();
+    for (DerpDot x : dots)
+      x.show();
+    me.show();
+    for (Die x : dice)
+      if(dist(me.shipX,me.shipY,x.dieX,x.dieY) < 2*x.wit/3)
+        lose = true;
+    //walls.forEach(x => print(x));
+    //background(0);
+    //for(Die x : dice)
+    //  x.roll();
+    if (type1)
+      me.rotation -= 0.1;
+    if (type2)
+      me.rotation += 0.1;
+    if (type3)
+      me.shipX += 10*cos(me.rotation);
+    if (type3)
+      me.shipY += 10*sin(me.rotation);
   }
 }
 
 void mousePressed()
 {
+  setup();
   redraw();
 }
 
 void keyPressed()
 {
-  keyp = true;
+  switch(key) {
+  case 'a':
+    type1 = true;
+    break;
+  case 'd':
+    type2 = true;
+    break;
+  case 'w':
+    type3 = true;
+    break;
+  case ' ':
+    if(dots.size()>7)
+      dots.remove(0);
+    dots.add(new DerpDot());
+    break;
+  default:
+    break;
+  }
 }
 
 void keyReleased() 
 {
-  keyp = false;
+  switch(key) {
+  case 'a':
+    type1 = false;
+    break;
+  case 'd':
+    type2 = false;
+    break;
+  case 'w':
+    type3 = false;
+    break;
+  default:
+    break;
+  }
+  print(key);
+}
+
+class DerpDot
+{
+  float dotX;
+  float dotY;
+  float rotation;
+  DerpDot()
+  {
+    dotX = me.shipX;
+    dotY = me.shipY;
+    rotation = me.rotation;
+  }
+
+  void show()
+  {
+    dotX += 5*cos(rotation);
+    dotY += 5*sin(rotation);
+    ellipse(dotX,dotY,5,5);
+    if (dotX>width)
+      dotX = 0;
+    if (dotX<0)
+      dotX = width;
+    if (dotX>height)
+      dotY = 0;
+    if (dotY<0)
+      dotY = height;
+  }
 }
 
 class Ship
@@ -96,11 +171,11 @@ class Ship
     popMatrix();
     if (shipX>width)
       shipX = 0;
-    if(shipX<0)
+    if (shipX<0)
       shipX = width;
     if (shipY>height)
       shipY = 0;
-    if(shipY<0)
+    if (shipY<0)
       shipY = height;
   }
 }
@@ -114,6 +189,7 @@ class Die //models one single dice cube
   float vx;
   float vy;
   float wit;
+  boolean dead;
   Die(int x, int y) //constructor
   {
     dieX = x;
@@ -123,6 +199,7 @@ class Die //models one single dice cube
     vx = random(0, 10);
     vy = random(0, 10);
     wit = diceWidth;
+    dead = false;
   }
   void roll()
   {
