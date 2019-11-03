@@ -11,8 +11,6 @@ boolean lose;
 void setup()
 {
   size(1400, 800);
-  //noLoop();
-  //frameRate(5);
   stroke(255);
   strokeWeight(4);
   noFill();
@@ -36,10 +34,10 @@ void setup()
 void draw()
 {
   if (lose) {
-    fill(200,0,40);
+    fill(200, 0, 40);
     text("⚅⚅ ⚅ You Lost ⚅ ⚅⚅", width/2, height/2); 
     text("⚂⚃⚅⚁⚂⚂⚁⚂⚃⚂⚅⚃", width/2, height/4); 
-    text("⚂⚃⚄⚅⚁⚅⚂⚂⚁⚄⚃⚂", width/2, 3*height/4); 
+    text("⚂⚃⚄⚅⚁⚅⚂⚂⚁⚄⚃⚂", width/2, 3*height/4);
   } else {
     background(0);
     for (int i = 0; i < dice.size(); i++) {
@@ -59,12 +57,21 @@ void draw()
       x.show();
     me.show();
     for (Die x : dice)
-      if(dist(me.shipX,me.shipY,x.dieX,x.dieY) < 2*x.wit/3)
+      if (dist(me.shipX, me.shipY, x.dieX, x.dieY) < 2*x.wit/3)
         lose = true;
-    //walls.forEach(x => print(x));
-    //background(0);
-    //for(Die x : dice)
-    //  x.roll();
+    int i = 0;
+    while ( i<dice.size()) {
+    int j = 0;
+      while (j<dots.size()) {
+        if (dist(dots.get(j).dotX, dots.get(j).dotY, dice.get(i).dieX, dice.get(i).dieY) < 2*dice.get(i).wit/3) {
+          dice.get(i).hit();
+          dots.remove(j);
+          j+=1000;
+        }
+        j++;
+      }
+      i++;
+    }
     if (type1)
       me.rotation -= 0.1;
     if (type2)
@@ -95,7 +102,7 @@ void keyPressed()
     type3 = true;
     break;
   case ' ':
-    if(dots.size()>7)
+    if (dots.size()>7)
       dots.remove(0);
     dots.add(new DerpDot());
     break;
@@ -138,12 +145,12 @@ class DerpDot
   {
     dotX += 5*cos(rotation);
     dotY += 5*sin(rotation);
-    ellipse(dotX,dotY,5,5);
+    ellipse(dotX, dotY, 5, 5);
     if (dotX>width)
       dotX = 0;
     if (dotX<0)
       dotX = width;
-    if (dotX>height)
+    if (dotY>height)
       dotY = 0;
     if (dotY<0)
       dotY = height;
@@ -196,15 +203,14 @@ class Die //models one single dice cube
     dieY = y;
     num = (int)random(1, 7);
     angle = 0.1;
-    vx = random(0, 10);
-    vy = random(0, 10);
+    vx = random(1, 2);
+    vy = random(1, 2);
     wit = diceWidth;
     dead = false;
   }
   void roll()
   {
     num = (int)random(1, 7);
-    show();
   }
   void show()
   {
@@ -242,5 +248,18 @@ class Die //models one single dice cube
       vx *= -1;
     if (dieY>height || dieY<0)
       vy *= -1;
+  }
+
+  void hit()
+  {
+    num--;
+    float vt = atan(vx/vy);
+    float v = sqrt(vx*vx+vy*vy);
+    if(vy < 0)
+      v *= -1;
+    vx = v* sin(vt);
+    vy = v* cos(vt);
+    if (num < 1)
+      dice.remove(this);
   }
 }
