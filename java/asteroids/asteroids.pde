@@ -7,6 +7,7 @@ boolean type1;
 boolean type2;
 boolean type3;
 boolean lose;
+int colorTic;
 
 void setup()
 {
@@ -30,7 +31,9 @@ void setup()
   }
   for (Die x : dice)
     x.roll();
+  colorTic = 50;
 }
+
 void draw()
 {
   if (lose) {
@@ -44,7 +47,11 @@ void draw()
       if (dice.get(i).dead)
         dice.remove(i);
     }
-    fill(random(0, 100), random(0, 100), random(0, 100));
+    if(colorTic > 15){
+     fill(random(0, 100), random(0, 100), random(0, 100));
+     colorTic = 0;
+    }
+    colorTic++;
     textSize(floor(height/4)); 
     textAlign(CENTER, CENTER);
     text("⚅⚅ ⚅ Dice Dodge ⚅ ⚅⚅", width/2, height/2); 
@@ -197,14 +204,14 @@ class Die //models one single dice cube
   float vy;
   float wit;
   boolean dead;
-  Die(int x, int y) //constructor
+  Die(float x, float y) //constructor
   {
     dieX = x;
     dieY = y;
     num = (int)random(1, 7);
     angle = 0.1;
-    vx = random(1, 2);
-    vy = random(1, 2);
+    vx = random(1, 5);
+    vy = random(1, 5);
     wit = diceWidth;
     dead = false;
   }
@@ -257,9 +264,15 @@ class Die //models one single dice cube
     float v = sqrt(vx*vx+vy*vy);
     if(vy < 0)
       v *= -1;
-    vx = v* sin(vt);
-    vy = v* cos(vt);
-    if (num < 1)
+    vx = v* sin(vt - (PI/3));
+    vy = v* cos(vt - (PI/3));
+    if (num < 1){
       dice.remove(this);
+    } else { 
+      dice.add(new Die(dieX,dieY));
+      dice.get(dice.size()-1).vx = v* sin(vt + (PI/3));
+      dice.get(dice.size()-1).vy = v* cos(vt + (PI/3));
+      dice.get(dice.size()-1).num = 1;
+    }
   }
 }
