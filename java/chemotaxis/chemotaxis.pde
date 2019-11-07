@@ -18,6 +18,22 @@ void setup() {
 void draw() {
   background(0);
   if (play) {
+    for(int i = 1; i < pop.size()-1; i++){
+      float init = pop.get(i).initiative;
+      int j = i-1;
+      while( j >= 0 && init > pop.get(j).initiative){
+        j--;
+        if(){
+          j--;
+        }else{
+          pop.add(j,pop.remove(i));
+          break;
+        }
+      }
+    }
+    print("\n\n\n\n\n\n\n\n");
+    for (Creature i : pop)
+      print(",  " + i.initiative);
     for (Creature i : pop)
       i.move();
     for (Creature i : pop) {
@@ -71,7 +87,10 @@ void draw() {
 }
 
 void mousePressed() {
-  redraw();
+  if(play)
+    play = false;
+  else
+    play = true;
 }
 
 static class Mat {
