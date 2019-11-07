@@ -23,8 +23,8 @@ void draw() {
       Creature keep = pop.get(i);
       int j = i-1;
       while( j >= 0 && init > pop.get(j).initiative){
-        j--;
         pop.set(j+1,pop.get(j));
+        j--;
       }
       pop.set(j+1,keep);
     }
