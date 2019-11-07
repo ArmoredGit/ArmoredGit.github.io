@@ -28,9 +28,9 @@ void draw() {
       }
       pop.set(j+1,keep);
     }
-    print("\n\n\n\n\n\n\n\n");
-    for (Creature i : pop)
-      print(",  " + i.initiative);
+    //print("\n\n\n\n\n\n\n\n");
+    //for (Creature i : pop)
+      //print(",  " + i.initiative);
     for (Creature i : pop)
       i.move();
     for (Creature i : pop) {
@@ -46,9 +46,11 @@ void draw() {
           pop.add(0, new Creature(pop.get(i).x, pop.get(i).y));
           pop.get(i).mate = false;
           pop.get(j).mate = false;
+          print(pop.get(i).energy);
           pop.get(i).energy /= 2;
+          print(pop.get(i).energy);
           pop.get(j).energy /= 2;
-          pop.get(0).energy = (pop.get(i).energy + pop.get(j).energy) / 2;
+          pop.get(0).energy = (pop.get(i).energy + pop.get(j).energy) / 4;
           pop.get(0).sensitivity = (pop.get(i).sensitivity + pop.get(j).sensitivity) / 2;
           pop.get(0).sensitivityFood = (pop.get(i).sensitivityFood + pop.get(j).sensitivityFood) / 2;
           pop.get(0).speedFood = (pop.get(i).speedFood + pop.get(j).speedFood) / 2;
