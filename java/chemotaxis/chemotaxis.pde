@@ -20,16 +20,13 @@ void draw() {
   if (play) {
     for(int i = 1; i < pop.size()-1; i++){
       float init = pop.get(i).initiative;
+      Creature keep = pop.get(i);
       int j = i-1;
       while( j >= 0 && init > pop.get(j).initiative){
         j--;
-        if(){
-          j--;
-        }else{
-          pop.add(j,pop.remove(i));
-          break;
-        }
+        pop.set(j+1,pop.get(j));
       }
+      pop.set(j+1,keep);
     }
     print("\n\n\n\n\n\n\n\n");
     for (Creature i : pop)
