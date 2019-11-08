@@ -28,9 +28,6 @@ void draw() {
       }
       pop.set(j+1,keep);
     }
-    //print("\n\n\n\n\n\n\n\n");
-    //for (Creature i : pop)
-      //print(",  " + i.initiative);
     for (Creature i : pop)
       i.move();
     for (Creature i : pop) {
@@ -43,27 +40,25 @@ void draw() {
     for (int i = pop.size() - 1; i >= 0; i--) {
       for (int j = pop.size() - 1; j >= 0; j--) {
         if (!pop.get(i).equals(pop.get(j)) && pop.get(i).mate && pop.get(j).mate && 10 > dist(pop.get(i).x, pop.get(i).y, pop.get(j).x, pop.get(j).y)) {
-          pop.add(0, new Creature(pop.get(i).x, pop.get(i).y));
           pop.get(i).mate = false;
           pop.get(j).mate = false;
-          print(pop.get(i).energy);
           pop.get(i).energy /= 2;
-          print(pop.get(i).energy);
           pop.get(j).energy /= 2;
-          pop.get(0).energy = (pop.get(i).energy + pop.get(j).energy) / 4;
-          pop.get(0).sensitivity = (pop.get(i).sensitivity + pop.get(j).sensitivity) / 2;
-          pop.get(0).sensitivityFood = (pop.get(i).sensitivityFood + pop.get(j).sensitivityFood) / 2;
-          pop.get(0).speedFood = (pop.get(i).speedFood + pop.get(j).speedFood) / 2;
-          pop.get(0).energyFood = (pop.get(i).energyFood + pop.get(j).energyFood) / 2;
-          pop.get(0).sensitivityMate = (pop.get(i).sensitivityMate + pop.get(j).sensitivityMate) / 2;
-          pop.get(0).speedMate = (pop.get(i).speedMate + pop.get(j).speedMate) / 2;
-          pop.get(0).energyMate = (pop.get(i).energyMate + pop.get(j).energyMate) / 2;
-          pop.get(0).speedWander = (pop.get(i).speedWander + pop.get(j).speedWander) / 2;
-          pop.get(0).initiative = (pop.get(i).initiative + pop.get(j).initiative) / 2;
-          pop.get(0).generation = pop.get(i).generation + 1;
-          pop.get(0).red = (pop.get(i).red + pop.get(j).red) / 2;
-          pop.get(0).green = (pop.get(i).green + pop.get(j).green) / 2;
-          pop.get(0).blue = (pop.get(i).blue + pop.get(j).blue) / 2;
+          pop.add(0, new Creature(pop.get(i).x, pop.get(i).y));
+          pop.get(0).energy = ((pop.get(i+1).energy + pop.get(j+1).energy) / 4)*random(.99,1.01);
+          pop.get(0).sensitivity = ((pop.get(i+1).sensitivity + pop.get(j+1).sensitivity) / 2)*random(.99,1.01);
+          pop.get(0).sensitivityFood = ((pop.get(i+1).sensitivityFood + pop.get(j+1).sensitivityFood) / 2)*random(.99,1.01);
+          pop.get(0).speedFood = ((pop.get(i+1).speedFood + pop.get(j+1).speedFood) / 2)*random(.99,1.01);
+          pop.get(0).energyFood = ((pop.get(i+1).energyFood + pop.get(j+1).energyFood) / 2)*random(.99,1.01);
+          pop.get(0).sensitivityMate = ((pop.get(i+1).sensitivityMate + pop.get(j+1).sensitivityMate) / 2)*random(.99,1.01);
+          pop.get(0).speedMate = ((pop.get(i+1).speedMate + pop.get(j+1).speedMate) / 2)*random(.99,1.01);
+          pop.get(0).energyMate = ((pop.get(i+1).energyMate + pop.get(j+1).energyMate) / 2)*random(.99,1.01);
+          pop.get(0).speedWander = ((pop.get(i+1).speedWander + pop.get(j+1).speedWander) / 2)*random(.99,1.01);
+          pop.get(0).initiative = ((pop.get(i+1).initiative + pop.get(j+1).initiative) / 2)*random(.99,1.01);
+          pop.get(0).generation = pop.get(i+1).generation + 1;
+          pop.get(0).red = ((pop.get(i+1).red + pop.get(j+1).red) / 2)*random(.99,1.01);
+          pop.get(0).green = ((pop.get(i+1).green + pop.get(j+1).green) / 2)*random(.99,1.01);
+          pop.get(0).blue = ((pop.get(i+1).blue + pop.get(j+1).blue) / 2)*random(.99,1.01);
         }
       }
     }
