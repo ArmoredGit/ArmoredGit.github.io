@@ -1,22 +1,41 @@
 ArrayList<Creature> pop;
 ArrayList<Food> feast;
 boolean play;
+int slowTic;
+int disp;
 
 void setup() {
-  size(800, 800);
+  size(1500, 1000);
   ellipseMode(CENTER);
   //noLoop();
   play = true;
   pop = new ArrayList<Creature>();
   feast = new ArrayList<Food>();
   for (int i = 0; i < 100; i++)
-    pop.add(new Creature(random(0, width), random(0, height)));
+    pop.add(new Creature(random(0, (width * 2 / 3)), random(0, height)));
   for (int i = 0; i < 20; i++)
-    feast.add(new Food(random(0, width), random(0, height), 100));
+    feast.add(new Food(random(0, (width * 2 / 3)), random(0, height), 100));
+  slowTic = 0;
+  disp = 0;
 }
 
 void draw() {
   background(0);
+  fill(0,150,0);
+  rect((width * 2 / 3),0,width,height);
+  fill(0);
+  rect((width * 2 / 3) + 6,0,width,height);
+  slowTic++;
+  if(slowTic > 180){
+    slowTic = 0;
+    disp++;
+  }
+  if(disp >= pop.size())
+    disp = 0;
+  fill(pop.get(disp).red,pop.get(disp).green,pop.get(disp).blue);
+  ellipse((width * 5 / 6),height/4,(width * 2 / 3)/5,height/5);
+  fill(255);
+  text("\n \n energy " + pop.get(disp).energy + "\n\n sensitivity " + pop.get(disp).sensitivity + "\n\n sensitivityFood " + pop.get(disp).sensitivityFood + "\n\n speedFood " + pop.get(disp).speedFood + "\n\n energyFood " + pop.get(disp).energyFood + "\n\n sensitivityMate " + pop.get(disp).sensitivityMate + "\n\n speedMate " + pop.get(disp).speedMate + "\n\n energyMate " + pop.get(disp).energyMate + "\n\n speedWander " + pop.get(disp).speedWander + "\n\n  initiative " + pop.get(disp).initiative + "\n\n  generation " + pop.get(disp).generation + "\n\n  red " + pop.get(disp).red + "\n\n  green " + pop.get(disp).green + "\n\n  blue " + pop.get(disp).blue,(width * 2 / 3) + 10 ,height/2);
   if (play) {
     for(int i = 1; i < pop.size()-1; i++){
       float init = pop.get(i).initiative;
@@ -45,20 +64,20 @@ void draw() {
           pop.get(i).energy /= 2;
           pop.get(j).energy /= 2;
           pop.add(0, new Creature(pop.get(i).x, pop.get(i).y));
-          pop.get(0).energy = ((pop.get(i+1).energy + pop.get(j+1).energy) / 4)*random(.99,1.01);
-          pop.get(0).sensitivity = ((pop.get(i+1).sensitivity + pop.get(j+1).sensitivity) / 2)*random(.99,1.01);
-          pop.get(0).sensitivityFood = ((pop.get(i+1).sensitivityFood + pop.get(j+1).sensitivityFood) / 2)*random(.99,1.01);
-          pop.get(0).speedFood = ((pop.get(i+1).speedFood + pop.get(j+1).speedFood) / 2)*random(.99,1.01);
-          pop.get(0).energyFood = ((pop.get(i+1).energyFood + pop.get(j+1).energyFood) / 2)*random(.99,1.01);
-          pop.get(0).sensitivityMate = ((pop.get(i+1).sensitivityMate + pop.get(j+1).sensitivityMate) / 2)*random(.99,1.01);
-          pop.get(0).speedMate = ((pop.get(i+1).speedMate + pop.get(j+1).speedMate) / 2)*random(.99,1.01);
-          pop.get(0).energyMate = ((pop.get(i+1).energyMate + pop.get(j+1).energyMate) / 2)*random(.99,1.01);
-          pop.get(0).speedWander = ((pop.get(i+1).speedWander + pop.get(j+1).speedWander) / 2)*random(.99,1.01);
-          pop.get(0).initiative = ((pop.get(i+1).initiative + pop.get(j+1).initiative) / 2)*random(.99,1.01);
-          pop.get(0).generation = pop.get(i+1).generation + 1;
-          pop.get(0).red = ((pop.get(i+1).red + pop.get(j+1).red) / 2)*random(.99,1.01);
-          pop.get(0).green = ((pop.get(i+1).green + pop.get(j+1).green) / 2)*random(.99,1.01);
-          pop.get(0).blue = ((pop.get(i+1).blue + pop.get(j+1).blue) / 2)*random(.99,1.01);
+          pop.get(0).energy = ((pop.get(i+1).energy + pop.get(j+1).energy) / 4)*random(.95,1.05);
+          pop.get(0).sensitivity = ((pop.get(i+1).sensitivity + pop.get(j+1).sensitivity) / 2)*random(.95,1.05);
+          pop.get(0).sensitivityFood = ((pop.get(i+1).sensitivityFood + pop.get(j+1).sensitivityFood) / 2)*random(.95,1.05);
+          pop.get(0).speedFood = ((pop.get(i+1).speedFood + pop.get(j+1).speedFood) / 2)*random(.95,1.05);
+          pop.get(0).energyFood = ((pop.get(i+1).energyFood + pop.get(j+1).energyFood) / 2)*random(.95,1.05);
+          pop.get(0).sensitivityMate = ((pop.get(i+1).sensitivityMate + pop.get(j+1).sensitivityMate) / 2)*random(.95,1.05);
+          pop.get(0).speedMate = ((pop.get(i+1).speedMate + pop.get(j+1).speedMate) / 2)*random(.95,1.05);
+          pop.get(0).energyMate = ((pop.get(i+1).energyMate + pop.get(j+1).energyMate) / 2)*random(.95,1.05);
+          pop.get(0).speedWander = ((pop.get(i+1).speedWander + pop.get(j+1).speedWander) / 2)*random(.95,1.05);
+          pop.get(0).initiative = ((pop.get(i+1).initiative + pop.get(j+1).initiative) / 2)*random(.95,1.05);
+          pop.get(0).generation = ((pop.get(i+1).generation > pop.get(j+1).generation)?pop.get(i+1).generation:pop.get(j+1).generation) + 1;
+          pop.get(0).red = ((pop.get(i+1).red + pop.get(j+1).red) / 2)*random(.95,1.05);
+          pop.get(0).green = ((pop.get(i+1).green + pop.get(j+1).green) / 2)*random(.95,1.05);
+          pop.get(0).blue = ((pop.get(i+1).blue + pop.get(j+1).blue) / 2)*random(.95,1.05);
         }
       }
     }
@@ -69,14 +88,14 @@ void draw() {
       i.show();
     for (Food i : feast)
       i.show();
-    feast.add(new Food(random(0, width), random(0, height), 100));
+    feast.add(new Food(random(0, (width * 2 / 3)), random(0, height), 100));
     if(pop.size() == 1)
       play = false;
   } else {
     fill(pop.get(0).red,pop.get(0).green,pop.get(0).blue);
-    ellipse(width/4,height/4,width/5,height/5);
+    ellipse((width * 2 / 3)/4,height/4,(width * 2 / 3)/5,height/5);
     fill(255);
-    text("winner \n \n energy " + pop.get(0).energy + "\n sensitivity " + pop.get(0).sensitivity + "\n sensitivityFood " + pop.get(0).sensitivityFood + "\n speedFood " + pop.get(0).speedFood + "\n energyFood " + pop.get(0).energyFood + "\n sensitivityMate " + pop.get(0).sensitivityMate + "\n speedMate " + pop.get(0).speedMate + "\n energyMate " + pop.get(0).energyMate + "\n speedWander " + pop.get(0).speedWander + "\n  initiative " + pop.get(0).initiative + "\n  generation " + pop.get(0).generation + "\n  red " + pop.get(0).red + "\n  green " + pop.get(0).green + "\n  blue " + pop.get(0).blue,width/2,height/10);
+    text("winner \n \n energy " + pop.get(0).energy + "\n sensitivity " + pop.get(0).sensitivity + "\n sensitivityFood " + pop.get(0).sensitivityFood + "\n speedFood " + pop.get(0).speedFood + "\n energyFood " + pop.get(0).energyFood + "\n sensitivityMate " + pop.get(0).sensitivityMate + "\n speedMate " + pop.get(0).speedMate + "\n energyMate " + pop.get(0).energyMate + "\n speedWander " + pop.get(0).speedWander + "\n  initiative " + pop.get(0).initiative + "\n  generation " + pop.get(0).generation + "\n  red " + pop.get(0).red + "\n  green " + pop.get(0).green + "\n  blue " + pop.get(0).blue,(width * 2 / 3)/2,height/10);
   }
 }
 
@@ -163,7 +182,7 @@ class Creature {
     energyMate = random(15000, 20000);
     sensitivityMate = random(0, 5);
     speedMate = random(5, 25);
-    speedWander = random(5, 25);
+    speedWander = random(1, 35);
     initiative = random(0, 100);
     generation = 1;
     red = random(0, 255);
@@ -226,8 +245,8 @@ class Creature {
     float thet = random(0, TWO_PI);
     x+=2*cos(thet);
     y+=2*sin(thet);
-    if (x>width)
-      x = width;
+    if (x>(width * 2 / 3))
+      x = (width * 2 / 3);
     if (x<0)
       x = 0;
     if (y>height)
