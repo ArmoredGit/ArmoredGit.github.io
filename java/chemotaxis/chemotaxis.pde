@@ -97,13 +97,6 @@ void draw() {
   }
 }
 
-void mousePressed() {
-  if(play)
-    play = false;
-  else
-    play = true;
-}
-
 static class Mat {
   static float sigmoid(float distance, float sensitivity, float value) {
     float l = 2*value;
