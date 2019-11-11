@@ -92,10 +92,8 @@ void draw() {
     if(pop.size() == 1)
       play = false;
   } else {
-    fill(pop.get(0).red,pop.get(0).green,pop.get(0).blue);
-    ellipse((width * 2 / 3)/4,height/4,(width * 2 / 3)/5,height/5);
-    fill(255);
-    text("winner \n \n energy " + pop.get(0).energy + "\n sensitivity " + pop.get(0).sensitivity + "\n sensitivityFood " + pop.get(0).sensitivityFood + "\n speedFood " + pop.get(0).speedFood + "\n energyFood " + pop.get(0).energyFood + "\n sensitivityMate " + pop.get(0).sensitivityMate + "\n speedMate " + pop.get(0).speedMate + "\n energyMate " + pop.get(0).energyMate + "\n speedWander " + pop.get(0).speedWander + "\n  initiative " + pop.get(0).initiative + "\n  generation " + pop.get(0).generation + "\n  red " + pop.get(0).red + "\n  green " + pop.get(0).green + "\n  blue " + pop.get(0).blue,(width * 2 / 3)/2,height/10);
+    play = true;
+    setup();
   }
 }
 
