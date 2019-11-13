@@ -208,10 +208,8 @@ class Creature {
         if (dist(this.x, this.y, this.sight[1], this.sight[2]) < this.speedFood) {
           this.x=this.sight[1];
           this.y=this.sight[2];
-          print(this.x);
         } else {
           this.thet = atan((this.y-this.sight[2])/(this.x-this.sight[1]));
-          print(this.thet);
           if (this.x > this.sight[1]) {
             this.x-=2*this.speedFood*cos(this.thet);
             this.y-=2*this.speedFood*sin(this.thet);
@@ -219,23 +217,17 @@ class Creature {
           this.x+=this.speedFood*cos(this.thet);
           this.y+=this.speedFood*sin(this.thet);
           this.energy-=this.speedFood;
-          print(this.x);
-          print(this.thet);
         }
       } else {
         this.thet = random(0, TWO_PI);
         this.x+=this.speedWander*cos(this.thet);
         this.y+=this.speedWander*sin(this.thet);
         this.energy-=this.speedWander;
-        print(this.x);
-        print(this.thet);
       }
     }
     this.thet = random(0, TWO_PI);
     this.x+=2*cos(this.thet);
     this.y+=2*sin(this.thet);
-    print(this.x);
-    print(this.thet);
     if (this.x>(width * 2 / 3)){
       this.x = (width * 2 / 3);
     }
@@ -248,8 +240,6 @@ class Creature {
     if (this.y<0){
       this.y = 0;
     }
-    print(this.x);
-    print(this.thet);
   }
 
   show() {
