@@ -136,7 +136,8 @@ function strongSigM( x,  y,  sensitivity, lists,  him) {
   strong[0] = 0;
   strong[1] = 0;
   strong[2] = 0;
-  lists(i => {
+  lists.forEach(i => 
+  {
     if (i.mate && !i.equals(him)) {
       let next = sigmoid(dist(x, y, i.x, i.y), sensitivity, i.energy);
       if (strong[0] < next) {
