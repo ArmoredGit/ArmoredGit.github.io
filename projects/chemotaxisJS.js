@@ -133,20 +133,20 @@ function strongSig( x,  y,  sensitivity, lists) {
 
 function strongSigM( x,  y,  sensitivity, lists,  him) {
   let strong = [];
-  this.strong[0] = 0;
-  this.strong[1] = 0;
-  this.strong[2] = 0;
+  strong[0] = 0;
+  strong[1] = 0;
+  strong[2] = 0;
   lists(i => {
     if (i.mate && !i.equals(him)) {
       let next = sigmoid(dist(x, y, i.x, i.y), sensitivity, i.energy);
       if (strong[0] < next) {
-        this.strong[0] = this.next;
-        this.strong[1] = this.i.x;
-        this.strong[2] = this.i.y;
+        strong[0] = this.next;
+        strong[1] = this.i.x;
+        strong[2] = this.i.y;
       }
     }
   });
-  return this.strong;
+  return strong;
 }
 
 class Creature {
