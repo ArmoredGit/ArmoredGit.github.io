@@ -10,12 +10,8 @@ int gloabalTic;
 void setup(){
   //your code here
   size(500,500);
-  frameRate(35);
   noStroke();
-  jeff = new ArrayList<Particle>();
-  for(int i = 0; i < 10; i++){
-    jeff.add(new NormalParticle());
-  }
+  fill(255);
   gloabalNewA = -0.01;
   gloabalNewV = random(2,5);
   gloabalNewT = random(0,360);
@@ -23,6 +19,12 @@ void setup(){
   gloabalNewG = random(0,255);
   gloabalNewB = random(0,255);
   gloabalTic = 0;
+  jeff = new ArrayList<Particle>();
+  jeff.add(new OddballParticle());
+  jeff.add(new JumboParticle());
+  for(int i = 0; i < 50; i++){
+    jeff.add(new NormalParticle());
+  }
 }
 
 void draw(){
@@ -36,8 +38,11 @@ void draw(){
     jeff.get(i).show();
   }
   if(gloabalTic < 100){
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < 50; i++){
       jeff.add(new NormalParticle());
+    }
+    if(gloabalTic > 90 && (int)random(0,20) == 4){
+      jeff.add(new JumboParticle());
     }
   } else {
     gloabalNewA = -0.01;
@@ -50,9 +55,8 @@ void draw(){
       gloabalTic = 0;
     }
   }
-  ellipse(width/2,height/2,10,10);
   for(int i = 0; i < jeff.size(); i++){
-    if(dist(jeff.get(i).getx(),jeff.get(i).gety(),width/2,height/2) > width){
+    if(dist(jeff.get(i).getx(),jeff.get(i).gety(),width/2,height/2) > width || jeff.get(i).getAge() > 500){
       jeff.remove(i);
     }
   }
@@ -102,6 +106,10 @@ class NormalParticle implements Particle{
   float gety(){
     return y;
   }
+  
+  int getAge(){
+    return tic;
+  }
 }
 
 interface Particle{
@@ -110,15 +118,57 @@ interface Particle{
   void show();
   float getx();
   float gety();
+  int getAge();
 }
 
-class OddballParticle //uses an interface
+class JumboParticle extends NormalParticle implements Particle //uses an interface
 {
-
+  JumboParticle(){}
+  
+  void move(){
+    super.move();
+  }
+  
+  void show(){
+    fill(r,g,b);
+    ellipse(x,y,30,30);
+  }
+  
+  float getx(){
+    return x;
+  }
+  
+  float gety(){
+    return y;
+  }
+  
+  int getAge(){
+    return tic;
+  }
 }
 
-class JumboParticle //uses inheritance
+class OddballParticle extends NormalParticle implements Particle //uses an interface
 {
-
-
+  OddballParticle(){}
+  
+  void move(){
+    //this should do nothong
+  }
+  
+  void show(){
+    fill(r,g,b);
+    ellipse((width/2)+random(-4,4),(height/2)+random(-4,4),10,10);
+  }
+  
+  float getx(){
+    return x;
+  }
+  
+  float gety(){
+    return y;
+  }
+  
+  int getAge(){
+    return 0;
+  }
 }
