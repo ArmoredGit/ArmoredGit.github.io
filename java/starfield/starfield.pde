@@ -9,7 +9,7 @@ int gloabalTic;
 
 void setup(){
   //your code here
-  size(500,500);
+  size(1000,1000);
   noStroke();
   fill(255);
   gloabalNewA = -0.01;
@@ -20,7 +20,9 @@ void setup(){
   gloabalNewB = random(0,255);
   gloabalTic = 0;
   jeff = new ArrayList<Particle>();
-  jeff.add(new OddballParticle());
+  for(int i = 0; i < 20; i++){
+    jeff.add(new OddballParticle());
+  }
   jeff.add(new JumboParticle());
   for(int i = 0; i < 50; i++){
     jeff.add(new NormalParticle());
@@ -152,11 +154,12 @@ class OddballParticle extends NormalParticle implements Particle //uses an inter
   OddballParticle(){}
   
   void move(){
-    //this should do nothong
+    r = gloabalNewR + random(-20,20);
+    g = gloabalNewG + random(-20,20);
+    b = gloabalNewB + random(-20,20); 
   }
   
   void show(){
-    fill(r,g,b);
     ellipse((width/2)+random(-4,4),(height/2)+random(-4,4),10,10);
   }
   
