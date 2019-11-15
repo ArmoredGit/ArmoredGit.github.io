@@ -6,6 +6,7 @@ var gloabalNewR;
 var gloabalNewG;
 var gloabalNewB;
 var gloabalTic;
+var gloabalRun;
 
 function setup(){
   //your code here
@@ -19,6 +20,7 @@ function setup(){
   gloabalNewG = random(0,255);
   gloabalNewB = random(0,255);
   gloabalTic = 0;
+  gloabalRun = 0;
   jeff = [];
   for(let i = 0; i < 10; i++){
     jeff.push(new OddballParticle());
@@ -51,6 +53,7 @@ function draw(){
     gloabalNewB = random(0,255);
     if(gloabalTic > 300){
       gloabalTic = 0;
+      gloabalRun++;
     }
   }
   for(let i = 0; i < jeff.length; i++){
@@ -66,7 +69,7 @@ class NormalParticle{
     this.x = width/2;
     this.y = height/2;
     this.speed = 2;
-    this.angle = random(0,50) + gloabalNewT;
+    this.angle = ((random([0,1,]) == 0)?random(180,240):random(0,60)) + gloabalNewT;
     this.tic = 0;
     this.a = gloabalNewA;
     this.v = gloabalNewV;
