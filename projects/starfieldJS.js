@@ -91,7 +91,7 @@ class NormalParticle {
       this.angle = gloabalNewT;
       this.x = random(0, width);
       this.y = random(0, height);
-      this.tic = 250;
+      this.tic = 350;
     }
   }
 
