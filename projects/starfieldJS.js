@@ -1,57 +1,52 @@
-      this.y = random(0,height);
-    }
+  var jeff;
+var gloabalNewA;
+var gloabalNewV;
+var gloabalNewT;
+var gloabalNewR;
+var gloabalNewG;
+var gloabalNewB;
+var gloabalTic;
+var gloabalRun;
+
+function setup() {
+  //your code here
+  createCanvas(window.innerWidth, window.innerHeight);
+  noStroke();
+  fill(255);
+  gloabalNewA = -0.01;
+  gloabalNewV = random(2, 5);
+  gloabalNewT = random(0, 360);
+  gloabalNewR = random(0, 255);
+  gloabalNewG = random(0, 255);
+  gloabalNewB = random(0, 255);
+  gloabalTic = 0;
+  gloabalRun = 0;
+  jeff = [];
+  for (let i = 0; i < 10; i++) {
+    jeff.push(new OddballParticle());
   }
-  
-   move(){
-    this.tic ++;
-    this.x += this.speed*cos(radians(this.angle));
-    this.y += this.speed*sin(radians(this.angle));
-    this.angle -= ((this.a * this.tic) + this.v);
-  }
-  
-   show(){
-    fill(this.r,this.g,this.b);
-    ellipse(this.x,this.y,10,10);
-  }
-  
-   getx(){
-    return this.x;
-  }
-  
-   gety(){
-    return this.y;
-  }
-  
-   getAge(){
-    return this.tic;
+  for (let i = 0; i < 30; i++) {
+    jeff.push(new NormalParticle());
   }
 }
 
-class OddballParticle extends NormalParticle//uses an varerface
-{
-  constructor(){
-    super();
+function draw() {
+  //your code here
+  gloabalTic++;
+  background(0);
+  for (let i = 0; i < jeff.length; i++) {
+    jeff[i].move();
   }
-  
-   move(){
-    super.r = gloabalNewR + random(-20,20);
-    super.g = gloabalNewG + random(-20,20);
-    super.b = gloabalNewB + random(-20,20); 
+  for (let i = 0; i < jeff.length; i++) {
+    jeff[i].show();
   }
-  
-   show(){
-    ellipse((width/2)+random(-4,4),(height/2)+random(-4,4),10,10);
-  }
-  
-   getx(){
-    return (width/2);
-  }
-  
-   gety(){
-    return (height/2);
-  }
-  
-   getAge(){
-    return 0;
-  }
-}
+  if (gloabalTic < 100) {
+    for (let i = 0; i < 30; i++) {
+      jeff.push(new NormalParticle());
+    }
+  } else {
+    gloabalNewA = -0.01;
+    gloabalNewV = random(2, 5);
+    gloabalNewT = random(0, 360);
+    gloabalNewR = random(0, 255);
+    gloabalNewG = random(0, 255);
