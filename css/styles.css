@@ -18,21 +18,19 @@ a {
 }
 
 body p img {
-    border: 2px solid #19d119;
-    border-radius: 4px;
-    padding: 6px;
-    width: 30%;
-    height: auto;
-    margin-left: auto;
-    margin-right: 10%;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .box {
     border: 2px solid #19d119;
     border-radius: 4px;
     padding: 6px;
-    width: 30%;
-    margin-left: 10%;
+    width: auto;
+    border: 2px solid #19d119;
+    border-radius: 4px;
+    padding: 6px;
 }
 
 /* Navigation links */
@@ -70,4 +68,14 @@ body p img {
 #bannerimg {
     width: 100%;
     height: auto;
+}
+
+.gridCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+article {
+  position: relative;
 }
