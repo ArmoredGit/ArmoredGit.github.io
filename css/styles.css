@@ -29,7 +29,6 @@ body p img {
     width: auto;
     border: 2px solid #19d119;
     border-radius: 4px;
-    padding: 12px;
 }
 
 /* Navigation links */
@@ -73,8 +72,10 @@ body p img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 30px;
+  padding: 12px;
 }
 
 article {
   position: relative;
+  padding: 12px;
 }
