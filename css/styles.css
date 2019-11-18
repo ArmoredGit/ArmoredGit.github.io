@@ -26,11 +26,10 @@ body p img {
 .box {
     border: 2px solid #19d119;
     border-radius: 4px;
-    padding: 6px;
     width: auto;
     border: 2px solid #19d119;
     border-radius: 4px;
-    padding: 6px;
+    padding: 12px;
 }
 
 /* Navigation links */
