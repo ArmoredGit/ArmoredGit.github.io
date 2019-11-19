@@ -69,13 +69,17 @@ body p img {
 }
 
 .gridCard {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 30px;
-  padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 30px;
+    padding: 12px;
 }
 
 article {
-  position: relative;
-  padding: 12px;
+    position: relative;
+    padding: 12px;
+}
+
+center p {
+    padding: 10px;
 }
