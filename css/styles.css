@@ -3,11 +3,6 @@ body{
     background-color: black;
 }
 
-/*.navbar{
-    align-content: center;
-    text-align: center;
-}
-*/
 .header {
     width: 100%;
     height: auto;
@@ -15,6 +10,7 @@ body{
 
 a {
     color: #FAFAFF; 
+    padding:10px;
 }
 
 body p img {
@@ -47,7 +43,7 @@ body p img {
     color: white;
     text-decoration: none;
     font-size: 17px;
-    width: 25%;
+    width: 22%;
     /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
     text-align: center;
     /* If you want the text to be centered */
@@ -81,5 +77,9 @@ article {
 }
 
 center p {
+    padding: 12px;
+}
+
+p {
     padding: 10px;
 }
