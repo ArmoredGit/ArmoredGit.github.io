@@ -4,6 +4,8 @@ float a = 0.25;
 float s = 50;
 float rotX = 0;
 float rotY = 0;
+int tic = 0;
+
 void setup() {
   size(800, 800, P3D);
   textAlign(CENTER);
@@ -11,6 +13,11 @@ void setup() {
 }
 
 void draw() {
+  if (tic >= 255){  
+      tic=0;  
+    }else{  
+      tic++;
+    }
   pushMatrix();
   background(0);
   translate(width/4, height/4, 0);
@@ -19,9 +26,9 @@ void draw() {
   stroke(255);
   strokeWeight(10);
   noFill();
-  int c = 0;
+  float c = tic;
   beginShape();
-  for(float i = 0; i < TWO_PI * p + 0.1; i += 0.1){
+  for(float i = 0; i < TWO_PI * p; i += 0.01){
     float r = 2 + cos(q*i/p);
     float t = i;
     float z = a * sin(q*((p-1)*i/p));
@@ -29,7 +36,7 @@ void draw() {
     if (c >= 255){  
       c=0;  
     }else{  
-      c++;
+      c+=  255 / (TWO_PI * p / 0.01);
       stroke(c, 255, 255);
     }
     vertex(s * r * cos(t), s * r * sin(t), s * z);
@@ -45,9 +52,9 @@ void draw() {
   stroke(255);
   strokeWeight(10);
   noFill();
-  c = 0;
+  c = tic;
   beginShape();
-  for(float i = 0; i < TWO_PI * p + 0.1; i += 0.1){
+  for(float i = 0; i < TWO_PI * p; i += 0.01){
     float r = 2.5 - a* sin(q*(p-1)*i/p);
     float t = i;
     float z = 2.5 * cos(q*i/p);
@@ -55,7 +62,7 @@ void draw() {
     if (c >= 255){  
       c=0;  
     }else{  
-      c++;
+      c+=  255 / (TWO_PI * p / 0.01);
       stroke(c, 255, 255);
     }
     vertex(s * r * cos(t), s * r * sin(t), s * z);
@@ -102,5 +109,4 @@ void keyPressed(){
       p--;
       break;
   }
-  print(q);
 }
