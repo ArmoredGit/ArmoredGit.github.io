@@ -69,7 +69,7 @@ void draw() {
   rotateX(0);
   rotateY(0);
   textSize(30);
-  text("Turk's Head Knot", 0, 0, 0);
+  text("Turk's Head Knot\n" + q + "B" + p + "L", 0, 0, 0);
   popMatrix();
   
   pushMatrix();
@@ -83,7 +83,7 @@ void draw() {
 }
 
 void mouseDragged() {
-  rotY += (mouseX - pmouseX) * 0.01;
+  rotY -= (mouseX - pmouseX) * 0.01;
   rotX -= (mouseY - pmouseY) * 0.01;
 }
 
