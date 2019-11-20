@@ -83,7 +83,7 @@ void draw() {
 }
 
 void mouseDragged() {
-  rotY -= (mouseX - pmouseX) * 0.01;
+  rotY += (mouseX - pmouseX) * 0.01;
   rotX -= (mouseY - pmouseY) * 0.01;
 }
 
