@@ -10,7 +10,7 @@ var gloabalRun;
 
 function setup() {
   //your code here
-  createCanvas(window.innerWidth, window.innerHeight);
+  createCanvas(windowWidth, windowHeight);
   noStroke();
   fill(255);
   gloabalNewA = -0.01;
@@ -28,6 +28,10 @@ function setup() {
   for (let i = 0; i < 30; i++) {
     jeff.push(new NormalParticle());
   }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
