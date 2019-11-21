@@ -5,7 +5,7 @@ var slowTic;
 var disp;
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight-20);
+  createCanvas(windowWidth, windowHeight);
   ellipseMode(CENTER);
   play = true;
   pop = [];
@@ -264,4 +264,8 @@ class Food {
     fill(255);
     ellipse(this.x, this.y, 5, 5);
   }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
