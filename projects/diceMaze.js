@@ -8,7 +8,7 @@ var walls;
 
 function setup()
 {
-  createCanvas(window.innerWidth, window.innerHeight-20);
+  createCanvas(windowWidth, windowHeight);
   //noLoop();
   frameRate(5);
   rectMode(CENTER);
@@ -47,6 +47,10 @@ function setup()
       dice[dieCur+numDiceY].exp = true;
   }
   walls.forEach(x => print(x));
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw()
