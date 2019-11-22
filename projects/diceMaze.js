@@ -51,6 +51,7 @@ function setup()
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  diceWidth = ((numDiceX>numDiceY)?width/numDiceX:height/numDiceY)-4;
 }
 
 function draw()
