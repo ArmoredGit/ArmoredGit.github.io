@@ -52,6 +52,11 @@ function setup()
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   diceWidth = ((numDiceX>numDiceY)?width/numDiceX:height/numDiceY)-4;
+  for (var i = 0; i < numDiceX*numDiceY; i+=numDiceY) {
+    for (var j = 0; (j < numDiceY && j+i< numDice); j++) {
+      dice[floor(i+j)].resize(floor((width/(numDiceX*2))*((2*i/numDiceY)+1)), floor((height/(numDiceY*2))*((2*j)+1)));
+    }
+  }
 }
 
 function draw()
@@ -134,6 +139,12 @@ class Die
     this.exp = false;
     this.wall = true;
     this.maze = false;
+  }
+
+  resize(x, y)
+  {
+    this.dieX = x;
+    this.dieY = y;
   }
 
   roll()
