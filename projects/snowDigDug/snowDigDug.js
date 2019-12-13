@@ -352,15 +352,10 @@ function mousePressed() {
   if(!playing){
     playing = true;
     levels.resetLevel();
-  }
-}
-
-function mousePressed() {
-  if(!playing){
-    playing = true;
-    levels.resetLevel();
   } else {
-    attacking = true;
+    if(mousex<14 * width / 18){
+      attacking = true;
+    }
   }
 }
 
