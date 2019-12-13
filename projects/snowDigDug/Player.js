@@ -112,11 +112,11 @@ class Player  {
       snowBlockArray[round(this.x)][ceil(this.y)].up = false;
     } else if(round((this.x * 100)) % 100 == 50){
       if(snowBlockArray[floor(this.x)][round(this.y)].fill){
-        scoreBoard.add(50);
+        scoreBoard.add(10);
         exp.push({"x":floor(this.x),"y":round(this.y),});
       }
       if(snowBlockArray[ceil(this.x)][round(this.y)].fill){
-        scoreBoard.add(50);
+        scoreBoard.add(10);
         exp.push({"x":ceil(this.x),"y":round(this.y),});
       }
       snowBlockArray[floor(this.x)][round(this.y)].fill = false;
