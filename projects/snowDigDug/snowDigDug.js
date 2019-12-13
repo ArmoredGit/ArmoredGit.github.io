@@ -201,6 +201,12 @@ function draw() {
       } 
     }
     
+    //buttons 
+    fill(255);
+    stroke(255);
+    rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 12) + (width / 144), (6 * width / 144), (6 * height / 144));
+    stroke(0);
+    
     //ending the level
     let j = true;
     for(let i = obs.length-1; i >= 0; i--){
