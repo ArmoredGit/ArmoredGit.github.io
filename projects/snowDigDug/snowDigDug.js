@@ -205,11 +205,11 @@ function draw() {
     //buttons -- rect((width / 18 * x) + (height / 144), (2 * height / 18) + (height / 18 * y) + (width / 144), (22 * width / 144), (22 * height / 144));
     fill(255);
     stroke(255);
+    rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 0) + (width / 144), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 3) + (width / 144), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 6) + (width / 144), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 9) + (width / 144), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 12) + (width / 144), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144), (2 * height / 18) + (height / 18 * 15) + (width / 144), (22 * width / 144), (22 * height / 144));
     stroke(0);
     
     //ending the level
