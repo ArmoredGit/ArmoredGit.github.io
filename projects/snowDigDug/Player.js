@@ -5,12 +5,16 @@ class Player  {
     this.x = x;
     this.y = y;
     this.dir = 1;
+    this.lives = 3;
   }
   
   show(){
     fill(0);
     stroke(255);
     rect((width / 18 * this.x) + (height / 144), (2 * height / 18) + (height / 18 * this.y) + (width / 144), (6 * width / 144), (6 * height / 144));
+    for(let i = 0; i < round(this.lives); i++){
+      rect((width / 18 * i) + (height / 144), (17 * height / 18) + (width / 144), (6 * width / 144), (6 * height / 144));
+    }
     stroke(0);
   }
   
@@ -137,6 +141,7 @@ class Player  {
   reset(){ //for when player is killed
     this.x = 6;
     this.y = 7;
+    this.lives--;
   }
   
   attack(){ // air pump weapon
