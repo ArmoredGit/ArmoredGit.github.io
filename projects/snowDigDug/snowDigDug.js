@@ -355,23 +355,6 @@ function mousePressed() {
   }
 }
 
-function mouseDragged() {
-  started=true;
-  if((mouseY - pmouseY) > height / 40 ){
-    player1.move(3);
-    attacking = false;
-  } else if((pmouseY - mouseY) > height / 40 ){
-    player1.move(1);
-    attacking = false;
-  } else if((mouseX - pmouseX) > width / 40 ){
-    player1.move(2);
-    attacking = false;
-  } else if((pmouseX - mouseX) > width / 40 ){
-    player1.move(4);
-    attacking = false;
-  }
-}
-
 function mousePressed() {
   if(!playing){
     playing = true;
