@@ -365,7 +365,7 @@ function mousePressed() {
     levels.resetLevel();
   } else {
     print(367);
-    if(mousex<14 * width / 18){
+    if(mouseX<14 * width / 18){
       attacking = true;
       print(370);
     }
