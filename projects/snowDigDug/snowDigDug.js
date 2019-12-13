@@ -205,11 +205,11 @@ function draw() {
     //buttons -- rect((width / 18 * x) + (height / 144), (2 * height / 18) + (height / 18 * y) + (width / 144), (22 * width / 144), (22 * height / 144));
     fill(255);
     stroke(255);
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144), (22 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     stroke(0);
     
     //ending the level
