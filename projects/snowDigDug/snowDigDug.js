@@ -215,11 +215,11 @@ function draw() {
     rect((width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     stroke(0);
     textSize(height / 18);
-    text("(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text((width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text((width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text((width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text((width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    text("--",(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    text("^",(width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    text(">",(width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    text("v",(width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    text("<",(width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     
     //lower info pannel
     textAlign(RIGHT);
