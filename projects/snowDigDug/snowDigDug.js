@@ -74,6 +74,7 @@ function draw() {
     if(attacking){
       player1.attack();
       moving = false;
+      print(77);
     }
     if(keyCode==UP_ARROW && moving){
       player1.move(1);
@@ -363,8 +364,10 @@ function mousePressed() {
     playing = true;
     levels.resetLevel();
   } else {
+    print(367);
     if(mousex<14 * width / 18){
       attacking = true;
+      print(370);
     }
   }
 }
