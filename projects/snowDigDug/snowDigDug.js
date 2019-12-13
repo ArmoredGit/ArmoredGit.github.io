@@ -78,19 +78,19 @@ function draw() {
     }
     
     //calls to movement
-    if((keyCode==UP_ARROW || (mousPressed && mouseY > (2 * height / 18) + (width / 144) + (width / 36) && mouseY < (2 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144)))) && moving){
+    if((keyCode==UP_ARROW || (mousPressed && mouseY > (2 * height / 18) + (width / 144) + (width / 36) && mouseY < (2 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(1);
       started=true;
       attacking = false;
-    } else if ((keyCode==DOWN_ARROW || (mousPressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144)))) && moving){
+    } else if ((keyCode==DOWN_ARROW || (mousPressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(3);
       started=true;
       attacking = false;
-    } else if ((keyCode==LEFT_ARROW ||  (mousPressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144)))) && moving){
+    } else if ((keyCode==LEFT_ARROW ||  (mousPressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(4);
       started=true;
       attacking = false;
-    } else if ((keyCode==RIGHT_ARROW ||  (mousPressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144)))) && moving){
+    } else if ((keyCode==RIGHT_ARROW ||  (mousPressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(2);
       started=true;
       attacking = false;
