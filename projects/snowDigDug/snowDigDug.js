@@ -215,7 +215,7 @@ function draw() {
     //lower info pannel
     textAlign(RIGHT);
     textSize(height / 36);
-    text("level " + round(levels.level) + "\n/12",0, (17 * height / 18), width, (height / 18));
+    text("level " + round(levels.level) + "\n/12",0, (17 * height / 18), (14 * height / 18), (height / 18));
     textAlign(CENTER);
     
     //ending the level
