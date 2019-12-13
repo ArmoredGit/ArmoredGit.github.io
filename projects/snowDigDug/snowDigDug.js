@@ -212,6 +212,12 @@ function draw() {
     rect((width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     stroke(0);
     
+    //lower info pannel
+    textAlign(RIGHT);
+    textSize(height / 36);
+    text("level " + round(levels.level) + "\n/12",0, (17 * height / 18), width, (height / 18));
+    textAlign(CENTER);
+    
     //ending the level
     let j = true;
     for(let i = obs.length-1; i >= 0; i--){
