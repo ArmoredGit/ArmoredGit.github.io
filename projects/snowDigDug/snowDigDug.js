@@ -16,6 +16,7 @@ var exp;
 var rocksDropped;
 var maze;
 var wsize;
+var QR;
 
 //https://i1.wp.com/www.edcollins.com/digdug/digdug-grid.gif image of dig dug game
 //DigDug functions: http://www.edcollins.com/digdug/#:~:targetText=You%20score%20more%20points%20if,it%2C%20squashing%20it%20to%20death.
@@ -24,6 +25,7 @@ function setup() {
   wsize = ((window.innerWidth > window.innerHeight)?(floor(window.innerHeight/18)*18):(floor(window.innerWidth/18)*18));
   createCanvas(wsize,wsize);
   background(31, 17, 120);
+  QR = loadImage('pics/qr-code.png');
   localScore=0;
   levels = new LevelSelect(1);
   levels.resetLevel();
@@ -207,7 +209,7 @@ function draw() {
     //buttons -- rect((width / 18 * x) + (height / 144), (2 * height / 18) + (height / 18 * y) + (width / 144), (22 * width / 144), (22 * height / 144));
     fill(255);
     stroke(255);
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
@@ -216,7 +218,6 @@ function draw() {
     fill(0);
     textSize(height / 18);
     textAlign(CENTER,CENTER);
-    text("--",(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     text("^",(width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     text("v",(width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     text("<",(width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
@@ -368,6 +369,7 @@ function draw() {
           obs.splice(i,1);
         }
       }
+      image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     } else {
       timer = 0;
       levels.resetLevel();
