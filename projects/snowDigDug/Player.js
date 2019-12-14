@@ -142,6 +142,9 @@ class Player  {
     this.x = 6;
     this.y = 7;
     this.lives--;
+    if(this.lives <= 0) {
+      GameEnd()
+    }
   }
   
   attack(){ // air pump weapon
