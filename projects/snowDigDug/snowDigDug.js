@@ -270,6 +270,8 @@ function draw() {
       fill(0,255,0);
     }
     if(timer < 500){
+      image(QR,(width / 18) - (height/36), (height / 18) - (height/36) + (height) - (timer * height / 500), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
+      image(QR,(width / 18 * 13), (height / 18) - (height/36) + (height) - (timer * height / 500), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
       textAlign(CENTER);
       textSize(height / 36);
       text("MERRY CHRISTMAS",0,2*height/9 + (height) - (timer * height / 500),width,height/3 + (height) - (timer * height / 500));
@@ -302,6 +304,8 @@ function draw() {
       noStroke();
       image(hint,(width / 18 * 6), (14 * height / 18) + (height) - (timer * height / 500), (width / 3), (height / 9));
     } else if(timer < 800){
+      image(QR,(width / 18) - (height/36), (height / 18) - (height/36), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
+      image(QR,(width / 18 * 13), (height / 18) - (height/36), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
       textAlign(CENTER);
       textSize(height / 36);
       text("MERRY CHRISTMAS",0,2*height/9,width,height/3);
