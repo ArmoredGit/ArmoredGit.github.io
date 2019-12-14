@@ -9,13 +9,10 @@ class LevelSelect{
   
   resetLevel(){
     timer=0;
-    scoreBoard=new ScoreBoard();
     snowflakeArray = [];
     snowBlockArray = [];
     obs = [];
     exp = [];
-    pumpKills=0;
-    rockKills=0;
     rocksDropped = 0;
     started=false;
     maze = [];
@@ -69,7 +66,8 @@ class LevelSelect{
     exp.push({"x":6,"y":7,});
     exp.push({"x":7,"y":7,});
   
-    player1 = new Player(6,7);
+    player1.x = 6;
+    player1.y = 7;
     moving=false;
     rocksDropped = 0;
      
