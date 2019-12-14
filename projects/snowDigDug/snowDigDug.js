@@ -185,7 +185,7 @@ function draw() {
       } 
       rect((width / 18 * 6) + (height / 72), (2 * height / 18) + (height / 18 * 7) + (width / 72), (2 * width / 72), (2 * height / 72));
       noStroke();
-      if(player1.x == 6 && player1.y == 7){
+      if(round(player1.x) == 6 && round(player1.y) == 7){
         rocksDropped = -10;
         if(round(levels.level) == 1){
           scoreBoard.add(400);
