@@ -287,7 +287,7 @@ function draw() {
       textSize(height / 36);
       text("CREDIT  INF                                ROUND 1",0,17*height/18 + (height) - (timer * height / 500),width,8*height/9 + (height) - (timer * height / 500));
       text("\n[    press any key to begin    ]",0,2*height/9 + (height) - (timer * height / 500),width,height/3 + (height) - (timer * height / 500));
-      text("\n" + onUp +           " + highScore + "             ",0,height/18 + (height) - (timer * height / 500),width,height/9);
+      text("\n" + onUp + "          " + highScore + "             ",0,height/18 + (height) - (timer * height / 500),width,height/9);
       fill("red");
       rect((width / 18 * 6) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
       fill("green");
@@ -319,7 +319,7 @@ function draw() {
       textSize(height / 36);
       text("CREDIT  INF                                ROUND " + levels.level,0,17*height/18,width,8*height/9);
       text("\n[    press any key to begin    ]",0,2*height/9,width,height/3);
-      text("\n" + onUp +           " + highScore + "             ",0,height/18,width,height/9);
+      text("\n" + onUp + "          " + highScore + "             ",0,height/18,width,height/9);
       fill("red");
       rect((width / 18 * 6) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       fill("green");
