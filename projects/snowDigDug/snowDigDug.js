@@ -6,8 +6,6 @@ var attacking;
 var started;
 var obs;
 var localScore;
-var pumpKills;
-var rockKills;
 var scoreBoard;
 var timer;
 var levels;
@@ -18,6 +16,8 @@ var maze;
 var wsize;
 var QR;
 var hint;
+var HighScore;
+var onUp;
 
 //https://i1.wp.com/www.edcollins.com/digdug/digdug-grid.gif image of dig dug game
 //DigDug functions: http://www.edcollins.com/digdug/#:~:targetText=You%20score%20more%20points%20if,it%2C%20squashing%20it%20to%20death.
@@ -26,6 +26,24 @@ function setup() {
   wsize = ((window.innerWidth > window.innerHeight)?(floor(window.innerHeight/18)*18):(floor(window.innerWidth/18)*18));
   createCanvas(wsize,wsize);
   background(31, 17, 120);
+  scoreBoard=new ScoreBoard();
+  HighScore = 1000;
+  onUp = 0;
+  player1 = new Player(6,7);
+  QR = loadImage("/projects/snowDigDug/pics/qr-code.png");
+  hint = loadImage("/projects/snowDigDug/pics/ins.png");
+  localScore=0;
+  levels = new LevelSelect(1);
+  levels.resetLevel();
+  playing = false;
+}
+
+function GameEnd() {
+  wsize = ((window.innerWidth > window.innerHeight)?(floor(window.innerHeight/18)*18):(floor(window.innerWidth/18)*18));
+  createCanvas(wsize,wsize);
+  background(31, 17, 120);
+  player1 = new Player(6,7);
+  scoreBoard.endOfGame();
   QR = loadImage("/projects/snowDigDug/pics/qr-code.png");
   hint = loadImage("/projects/snowDigDug/pics/ins.png");
   localScore=0;
@@ -269,7 +287,7 @@ function draw() {
       textSize(height / 36);
       text("CREDIT  INF                                ROUND 1",0,17*height/18 + (height) - (timer * height / 500),width,8*height/9 + (height) - (timer * height / 500));
       text("\n[    press any key to begin    ]",0,2*height/9 + (height) - (timer * height / 500),width,height/3 + (height) - (timer * height / 500));
-      text("\n00           000000             ",0,height/18 + (height) - (timer * height / 500),width,height/9 + (height) - (timer * height / 500));
+      text("\n" + onUp +           " + highScore + "             ",0,height/18 + (height) - (timer * height / 500),width,height/9);
       fill("red");
       rect((width / 18 * 6) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
       fill("green");
@@ -301,7 +319,7 @@ function draw() {
       textSize(height / 36);
       text("CREDIT  INF                                ROUND " + levels.level,0,17*height/18,width,8*height/9);
       text("\n[    press any key to begin    ]",0,2*height/9,width,height/3);
-      text("\n00           000000             ",0,height/18,width,height/9);
+      text("\n" + onUp +           " + highScore + "             ",0,height/18,width,height/9);
       fill("red");
       rect((width / 18 * 6) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       fill("green");
@@ -367,12 +385,6 @@ function draw() {
       scoreBoard.show();
       obs.forEach(x => x.show());
       obs.forEach(x => x.move());
-      obs.forEach(x => x.kill());
-      for(let i = obs.length-1; i >= 0; i--){
-        if(obs[i].dead){
-          obs.splice(i,1);
-        }
-      }
       image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     } else {
       timer = 0;
