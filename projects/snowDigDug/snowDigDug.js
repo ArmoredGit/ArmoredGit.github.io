@@ -25,7 +25,7 @@ function setup() {
   wsize = ((window.innerWidth > window.innerHeight)?(floor(window.innerHeight/18)*18):(floor(window.innerWidth/18)*18));
   createCanvas(wsize,wsize);
   background(31, 17, 120);
-  QR = loadImage("ArmoredGit.github.io/projects/snowDigDug/pics/qr-code.png");
+  QR = loadImage("/snowDigDug/pics/qr-code.png");
   localScore=0;
   levels = new LevelSelect(1);
   levels.resetLevel();
