@@ -25,15 +25,29 @@ class Obstacle {
     this.distLeft = 0;
     this.dist = 0;
     this.kills = 0;
+    this.TargetX = player1.x;
+    this.TargetY = player1.y;
   }
 
   move() {
+    this.TargetX = player1.x;
+    this.TargetY = player1.y;
+    let j = true;
+    for(let i = obs.length-1; i >= 0; i--){
+      if(obs[i].type != "rock" && !obs[i].equals(this.id)){
+        j = false;
+      }
+    }
+    if(j){
+      this.TargetX = 0;
+      this.TargetY = 0;
+    }
     if (this.type == "drg" || this.type == "puf") {
       if(this.inflate > 0){
         this.inflate--;
         if(this.inflate > 100){
           this.dead = true;
-          if(abs((player1.y-this.y*1.0)) > abs((player1.x-this.x))){
+          if(abs((this.TargetY-this.y*1.0)) > abs((this.TargetX-this.x))){
             if(levels.level > 12){
               scoreBoard.add((this.type == "drg")?500:500);
             } else if(levels.level > 8){
@@ -314,7 +328,7 @@ class Obstacle {
     } else if (this.type == "rock") { // rocks, yeah that
       if (this.special == false) {
         if (this.y < 13) {
-          if (!snowBlockArray[round(this.x)][round(this.y + 1)].fill && dist(this.x, (this.y + 1), player1.x, player1.y) > 0.9) {
+          if (!snowBlockArray[round(this.x)][round(this.y + 1)].fill && dist(this.x, (this.y + 1), this.TargetX, this.TargetY) > 0.9) {
             this.special = true;
             this.tic = 0;
           }
@@ -393,34 +407,34 @@ class Obstacle {
 
   kill() {//kills the player if they should be dead
     if (this.type == "drg") {
-      if(dist(player1.x,player1.y,this.x,this.y) < 0.9){
+      if(dist(this.TargetX,this.TargetY,this.x,this.y) < 0.9){
         player1.reset();
       }
       if(this.tic > 100){
         if(this.dir == 1){
-          if(dist(player1.x,player1.y,this.x,this.y - 1) < 0.9){
+          if(dist(this.TargetX,this.TargetY,this.x,this.y - 1) < 0.9){
             player1.reset();
           }
         } else if(this.dir == 2){
-          if(dist(player1.x,player1.y,this.x + 1,this.y) < 0.9){
+          if(dist(this.TargetX,this.TargetY,this.x + 1,this.y) < 0.9){
             player1.reset();
           }
         } else if(this.dir == 3){
-          if(dist(player1.x,player1.y,this.x,this.y + 1) < 0.9){
+          if(dist(this.TargetX,this.TargetY,this.x,this.y + 1) < 0.9){
             player1.reset();
           }
         } else if(this.dir == 4){
-          if(dist(player1.x,player1.y,this.x - 1,this.y) < 0.9){
+          if(dist(this.TargetX,this.TargetY,this.x - 1,this.y) < 0.9){
             player1.reset();
           }
         }
       }
     } else if (this.type == "puf") {
-      if(dist(player1.x,player1.y,this.x,this.y) < 0.9){
+      if(dist(this.TargetX,this.TargetY,this.x,this.y) < 0.9){
         player1.reset();
       }
     } else if (this.type == "rock") {
-      if(dist(player1.x,player1.y,this.x,this.y) < 0.9 && this.special){
+      if(dist(this.TargetX,this.TargetY,this.x,this.y) < 0.9 && this.special){
         player1.reset();
       }
       for(let i = obs.length - 1; i >= 0; i--){
@@ -452,19 +466,19 @@ class Obstacle {
     if(!maze[round(x)][round(y)]){
       return false;
     }
-    if(round(x) == round(player1.x) && round(y) == round(player1.y)){
+    if(round(x) == round(this.TargetX) && round(y) == round(this.TargetY)){
       return true;
     }
     maze[round(x)][round(y)] = false;
     this.dir = 0;
-    let difq = abs((player1.y-this.y*1.0)) > abs((player1.x-this.x));
-    if(player1.y < this.y && difq){                
+    let difq = abs((this.TargetY-this.y*1.0)) > abs((this.TargetX-this.x));
+    if(this.TargetY < this.y && difq){                
       this.dir = 1;              
-    } else if(player1.x > this.x && !difq) {             
+    } else if(this.TargetX > this.x && !difq) {             
       this.dir = 2;               
-    } else if(player1.y > this.y && difq) {               
+    } else if(this.TargetY > this.y && difq) {               
       this.dir = 3;              
-    } else if(player1.x < this.x && !difq) {              
+    } else if(this.TargetX < this.x && !difq) {              
       this.dir = 4;                
     }                
     switch(round(this.dir)){
