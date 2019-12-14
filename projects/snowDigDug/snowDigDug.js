@@ -17,6 +17,7 @@ var rocksDropped;
 var maze;
 var wsize;
 var QR;
+var hint;
 
 //https://i1.wp.com/www.edcollins.com/digdug/digdug-grid.gif image of dig dug game
 //DigDug functions: http://www.edcollins.com/digdug/#:~:targetText=You%20score%20more%20points%20if,it%2C%20squashing%20it%20to%20death.
@@ -26,6 +27,7 @@ function setup() {
   createCanvas(wsize,wsize);
   background(31, 17, 120);
   QR = loadImage("/projects/snowDigDug/pics/qr-code.png");
+  hint = loadImage("/projects/snowDigDug/pics/ins.png");
   localScore=0;
   levels = new LevelSelect(1);
   levels.resetLevel();
@@ -280,6 +282,7 @@ function draw() {
       stroke("white");
       rect((width / 18 * 8) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
       noStroke();
+      image(QR,(width / 18 * 6), (12 * height / 18) + (height) - (timer * height / 500), (width / 3), (height / 9));
     } else if(timer < 800){
       textAlign(CENTER);
       textSize(height / 36);
@@ -311,6 +314,7 @@ function draw() {
       stroke("white");
       rect((width / 18 * 8) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       noStroke();
+      image(hint,(width / 18 * 6), (12 * height / 18), (width / 3), (height / 9));
     } else if(timer < 1500){
       background(0);
       background(31, 17, 120);
@@ -369,7 +373,7 @@ function draw() {
           obs.splice(i,1);
         }
       }
-      image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+      image(hint,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     } else {
       timer = 0;
       levels.resetLevel();
