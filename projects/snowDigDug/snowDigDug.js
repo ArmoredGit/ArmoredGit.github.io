@@ -282,7 +282,7 @@ function draw() {
       stroke("white");
       rect((width / 18 * 8) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
       noStroke();
-      image(QR,(width / 18 * 6), (12 * height / 18) + (height) - (timer * height / 500), (width / 3), (height / 9));
+      image(hint,(width / 18 * 6), (14 * height / 18) + (height) - (timer * height / 500), (width / 3), (height / 9));
     } else if(timer < 800){
       textAlign(CENTER);
       textSize(height / 36);
@@ -314,7 +314,7 @@ function draw() {
       stroke("white");
       rect((width / 18 * 8) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       noStroke();
-      image(hint,(width / 18 * 6), (12 * height / 18), (width / 3), (height / 9));
+      image(hint,(width / 18 * 6), (14 * height / 18), (width / 3), (height / 9));
     } else if(timer < 1500){
       background(0);
       background(31, 17, 120);
@@ -373,7 +373,7 @@ function draw() {
           obs.splice(i,1);
         }
       }
-      image(hint,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+      image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     } else {
       timer = 0;
       levels.resetLevel();
