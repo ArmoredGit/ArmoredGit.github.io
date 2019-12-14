@@ -20,8 +20,8 @@ class ScoreBoard  {
   }
   
   endOfGame() { 
-    if(localScore > HeighScore){
-      HeighScore = localScore
+    if(localScore > HighScore){
+      HighScore = localScore
     }
     onUp = localScore;
   }
