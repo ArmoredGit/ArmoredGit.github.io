@@ -13,8 +13,10 @@ class ScoreBoard  {
   }
   
   add(amount){
-    this.score += amount;
-    localScore=0+round(this.score);
+    if(playing){
+      this.score += amount;
+      localScore=0+round(this.score);
+    }
   }
   
   endOfGame() { 
