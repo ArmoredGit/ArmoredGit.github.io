@@ -17,6 +17,13 @@ class ScoreBoard  {
     localScore=0+round(this.score);
   }
   
+  endOfGame() { 
+    if(localScore > HeighScore){
+      HeighScore = localScore
+    }
+    onUp = localScore;
+  }
+  
   show(){
     fill(255,255,255);
     textAlign(CENTER);
