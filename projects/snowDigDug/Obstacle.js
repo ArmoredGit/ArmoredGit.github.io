@@ -30,18 +30,20 @@ class Obstacle {
   }
 
   move() {
-    this.TargetX = player1.x;
-    this.TargetY = player1.y;
-    let j = true;
-    for(let i = obs.length-1; i >= 0; i--){
-      if(obs[i].type != "rock" && !obs[i].equals(this.id)){
-        j = false;
+    if(!this.burrough) {
+      this.TargetX = player1.x;
+      this.TargetY = player1.y;
+      let j = true;
+      for(let i = obs.length-1; i >= 0; i--){
+        if(obs[i].type != "rock" && !obs[i].equals(this.id)){
+          j = false;
+        }
       }
-    }
-    if(j){
-      this.TargetX = 0;
-      this.TargetY = 0;
-    }
+      if(j){
+        this.TargetX = 0;
+        this.TargetY = 0;
+      }
+    } 
     if (this.type == "drg" || this.type == "puf") {
       if(this.inflate > 0){
         this.inflate--;
@@ -110,7 +112,22 @@ class Obstacle {
           }
         } else {
           if(this.burrough){
-            
+            if(round(this.x) == round(this.TargetX) && round(this.y) == round(this.TargetY)){
+              this.burrough = false;
+            }
+            if((round(this.y * 100) % 100 == 0 && round(this.x * 100) % 100 == 0) && !(round(this.x) == round(this.TargetX) && round(this.y) == round(this.TargetY))){ // --------------------------------------------------
+              this.dir = 0;
+              let difq = abs((this.TargetY-this.y*1.0)) > abs((this.TargetX-this.x));
+              if(this.TargetY < this.y && difq){                
+                this.dir = 1;              
+              } else if(this.TargetX > this.x && !difq) {             
+                this.dir = 2;               
+              } else if(this.TargetY > this.y && difq) {               
+                this.dir = 3;              
+              } else if(this.TargetX < this.x && !difq) {              
+                this.dir = 4;                
+              } 
+            }
           } else {
             if(round(this.y * 100) % 100 == 0 && round(this.x * 100) % 100 == 0){
               maze = [];
@@ -254,6 +271,10 @@ class Obstacle {
         if(j != 0){
           this.wander = false;
           this.burrough = false;
+        } 
+        if(round(this.y * 100) % 100 == 0 && round(this.x * 100) % 100 == 0 && random([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,]) == 20){
+          this.wander = false;
+          this.burrough = true;
         }
         
         //direction is 1 == up,2 == right,3 == down,4 == left
@@ -407,34 +428,34 @@ class Obstacle {
 
   kill() {//kills the player if they should be dead
     if (this.type == "drg") {
-      if(dist(this.TargetX,this.TargetY,this.x,this.y) < 0.9){
+      if(dist(player1.x,player1.y,this.x,this.y) < 0.9){
         player1.reset();
       }
       if(this.tic > 100){
         if(this.dir == 1){
-          if(dist(this.TargetX,this.TargetY,this.x,this.y - 1) < 0.9){
+          if(dist(player1.x,player1.y,this.x,this.y - 1) < 0.9){
             player1.reset();
           }
         } else if(this.dir == 2){
-          if(dist(this.TargetX,this.TargetY,this.x + 1,this.y) < 0.9){
+          if(dist(player1.x,player1.y,this.x + 1,this.y) < 0.9){
             player1.reset();
           }
         } else if(this.dir == 3){
-          if(dist(this.TargetX,this.TargetY,this.x,this.y + 1) < 0.9){
+          if(dist(player1.x,player1.y,this.x,this.y + 1) < 0.9){
             player1.reset();
           }
         } else if(this.dir == 4){
-          if(dist(this.TargetX,this.TargetY,this.x - 1,this.y) < 0.9){
+          if(dist(player1.x,player1.y,this.x - 1,this.y) < 0.9){
             player1.reset();
           }
         }
       }
     } else if (this.type == "puf") {
-      if(dist(this.TargetX,this.TargetY,this.x,this.y) < 0.9){
+      if(dist(player1.x,player1.y,this.x,this.y) < 0.9){
         player1.reset();
       }
     } else if (this.type == "rock") {
-      if(dist(this.TargetX,this.TargetY,this.x,this.y) < 0.9 && this.special){
+      if(dist(player1.x,player1.y,this.x,this.y) < 0.9 && this.special){
         player1.reset();
       }
       for(let i = obs.length - 1; i >= 0; i--){

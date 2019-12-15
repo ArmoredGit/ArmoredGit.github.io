@@ -253,7 +253,7 @@ function draw() {
     //ending the level
     let j = true;
     for(let i = obs.length-1; i >= 0; i--){
-      if(obs[i].type != "rock" || (round(obs[i].x) == 0 && round(obs[i].y) == 0)){
+      if((obs[i].type != "rock") && !(round(obs[i].x) == 0 && round(obs[i].y) == 0)){
         j = false;
       }
     }
