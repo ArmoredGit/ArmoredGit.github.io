@@ -292,20 +292,20 @@ function draw() {
       text("\n[    press any key to begin    ]",0,2*height/9 + (height) - (timer * height / 500),width,height/3);
       text("\n" + onUp + "          " + HighScore + "             ",0,height/18 + (height) - (timer * height / 500),width,height/9);
       fill("red");
-      rect((width / 18 * 6) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
+      rect((width / 18 * 6) + (width / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * (height / 500)), width / 18, height / 18);
       fill("green");
-      rect((width / 18 * 10) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
+      rect((width / 18 * 10) + (width / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * (height / 500)), width / 18, height / 18);
       fill("orange");
       if((timer)%50<=25){
-        rect((width / 18 * 11) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
+        rect((width / 18 * 11) + (width / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * (height / 500)), width / 18, height / 18);
       }
       fill("black");
       stroke("white");
-      rect((width / 18 * 8) + (height / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
+      rect((width / 18 * 8) + (width / 36), (height / 18 * 7) + (2 * height / 18) + (height) - (timer * height / 500), width / 18, height / 18);
       noStroke();
       image(hint,(width / 18 * 6), (14 * height / 18) + (height) - (timer * height / 500), (width / 3), (height / 9));
     } else if(timer < 800){
-      image(QR,(width / 18) - (height/36), (height / 18) - (height/36), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
+      image(QR,(width / 18) - (width/36), (height / 18) - (height/36), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
       image(QR,(width / 18 * 13), (height / 18) - (height/36), (4 * width / 18) + (height/36), (4 * height / 18) + (height/36));
       textAlign(CENTER);
       textSize(height / 36);
@@ -326,16 +326,16 @@ function draw() {
       text("\n[    press any key to begin    ]",0,2*height/9,width,height/3);
       text("\n" + onUp + "          " + HighScore + "             ",0,height/18,width,height/9);
       fill("red");
-      rect((width / 18 * 6) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
+      rect((width / 18 * 6) + (width / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       fill("green");
-      rect((width / 18 * 10) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
+      rect((width / 18 * 10) + (width / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       fill("orange");
       if((timer)%50<=25){
-        rect((width / 18 * 11) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
+        rect((width / 18 * 11) + (width / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       }
       fill("black");
       stroke("white");
-      rect((width / 18 * 8) + (height / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
+      rect((width / 18 * 8) + (width / 36), (height / 18 * 7) + (2 * height / 18), width / 18, height / 18);
       noStroke();
       image(hint,(width / 18 * 6), (14 * height / 18), (width / 3), (height / 9));
     } else if(timer < 1500){
