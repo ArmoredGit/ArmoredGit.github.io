@@ -30,7 +30,7 @@ class Obstacle {
   }
 
   move() {
-    if(!this.burrough) {
+    if(!this.burrough || this.tic == 1 || this.tic == 65) {
       this.TargetX = player1.x;
       this.TargetY = player1.y;
       let j = true;
