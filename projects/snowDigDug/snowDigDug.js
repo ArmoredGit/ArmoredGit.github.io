@@ -390,6 +390,7 @@ function draw() {
       scoreBoard.show();
       for(let i = 0; i < obs.length; i++){
         obs[i].burrough = false;
+        obs[i].wander = true;
       }
       obs.forEach(x => x.show());
       obs.forEach(x => x.move());
