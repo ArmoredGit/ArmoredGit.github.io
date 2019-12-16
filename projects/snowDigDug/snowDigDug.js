@@ -388,6 +388,9 @@ function draw() {
         player1.move(2);
       }
       scoreBoard.show();
+      for(let i = 0; i < obs.length; i++){
+        obs[i].burrough = false;
+      }
       obs.forEach(x => x.show());
       obs.forEach(x => x.move());
       image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
