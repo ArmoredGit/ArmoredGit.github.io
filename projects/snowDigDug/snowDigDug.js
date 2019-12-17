@@ -345,7 +345,7 @@ function draw() {
       fill(0, 121, 163);
       rect(0, width / 18 *17, 800, 900-(width / 18 *17));
       timer++;
-      textAlign(LEFT);
+      textAlign(LEFT,TOP);
       let greeting = "Happy Holidays!";
       let x1 = 165;
       let y1 = 85;
