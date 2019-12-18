@@ -340,6 +340,7 @@ class Obstacle {
         }
         
         //rock limits
+        if(!this.burrough){
         for(let i = obs.length - 1; i >= 0; i--){
           if(this.dir == 1){
             if(dist(obs[i].x,obs[i].y,this.x,this.y - 1) < 0.1 && !obs[i].special && obs[i].type == "rock"){
@@ -358,6 +359,7 @@ class Obstacle {
               this.dir = 2;
             }
           }
+        }
         }
         
         this.tic++; // tic increase 
