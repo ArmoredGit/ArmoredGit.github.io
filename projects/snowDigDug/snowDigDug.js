@@ -100,36 +100,19 @@ function draw() {
     }
     
     //calls to movement
-    //if((keyCode==UP_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
-      //player1.move(1);
-      //started=true;
-      //attacking = false;
-    //} else if ((keyCode==DOWN_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
-      //player1.move(3);
-      //started=true;
-      //attacking = false;
-    //} else if ((keyCode==LEFT_ARROW ||  (mouseX > (14 * width / 18) && mousePressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
-      //player1.move(4);
-      //started=true;
-      //attacking = false;
-    //} else if ((keyCode==RIGHT_ARROW ||  (mouseX > (14 * width / 18) && mousePressed && mouseY > (14 * height / 18) + (width / 144) + (width / 36) && mouseY < (14 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
-     //player1.move(2);
-      //started=true;
-      //attacking = false;
-    //}
-    if((keyCode==UP_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    if((key=='w' || keyCode==UP_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(1);
       started=true;
       attacking = false;
-    } else if ((keyCode==DOWN_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    } else if ((key=='s' || keyCode==DOWN_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(3);
       started=true;
       attacking = false;
-    } else if ((keyCode==LEFT_ARROW ||  (mouseX > (14 * width / 18) && mouseX < ((14 * width / 18) + (11 * width / 144)) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    } else if ((key=='a' || keyCode==LEFT_ARROW ||  (mouseX > (14 * width / 18) && mouseX < ((14 * width / 18) + (11 * width / 144)) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(4);
       started=true;
       attacking = false;
-    } else if ((keyCode==RIGHT_ARROW ||  (mouseX > ((14 * width / 18) + (11 * width / 144)) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    } else if ((key=='d' || keyCode==RIGHT_ARROW ||  (mouseX > ((14 * width / 18) + (11 * width / 144)) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(2);
       started=true;
       attacking = false;
