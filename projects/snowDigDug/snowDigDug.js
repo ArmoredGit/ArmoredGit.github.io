@@ -47,6 +47,7 @@ function GameEnd() {
   QR = loadImage("/projects/snowDigDug/pics/qr-code.png");
   hint = loadImage("/projects/snowDigDug/pics/ins.png");
   localScore=0;
+  scoreBoard.score = 0;
   levels = new LevelSelect(1);
   levels.resetLevel();
   playing = false;
