@@ -58,6 +58,7 @@ function draw() {
   if(playing){
     background(31, 17, 120);
     noStroke();
+    levels.drawTrees();
     fill(22, 75, 75);
     rect(0, (width / 18) * 3, width, (height / 18) *15);
     timer++;
@@ -342,6 +343,7 @@ function draw() {
       background(0);
       background(31, 17, 120);
       noStroke();
+      levels.drawTrees();
       fill(22, 75, 75);
       rect(0, (width / 18) * 3, width, (height / 18) *15);
       timer++;

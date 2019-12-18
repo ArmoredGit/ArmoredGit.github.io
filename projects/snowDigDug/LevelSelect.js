@@ -6,6 +6,22 @@ class LevelSelect{
   setLevel(level){
     this.level = level;
   }
+
+  drawTrees(){
+    if(this.level < 11){
+      for(let i = 1; i <= this.level; i++){
+        fill(0,255,0);
+        triangle((14 * width/18) - (i * width/18) + (width/36),(2*height/18),(14 * width/18) - (i * width/18),(3*height/18),(15 * width/18) - (i * width/18),(3*height/18));
+      }
+    }else{
+      fill(255,255,0);
+      triangle((14 * width/18) - (1 * width/18) + (width/36),(2*height/18),(14 * width/18) - (1 * width/18),(3*height/18),(15 * width/18) - (1 * width/18),(3*height/18));
+      for(let i = 1; i <= this.level%10; i++){
+        fill(0,255,0);
+        triangle((13 * width/18) - (i * width/18) + (width/36),(2*height/18),(13 * width/18) - (i * width/18),(3*height/18),(14 * width/18) - (i * width/18),(3*height/18));
+      }
+    }
+  }
   
   resetLevel(){
     timer=0;
