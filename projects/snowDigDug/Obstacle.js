@@ -128,25 +128,6 @@ class Obstacle {
                 this.dir = 4;                
               } 
             }
-            for(let i = obs.length - 1; i >= 0; i--){
-              if(this.dir == 1){
-                if(dist(obs[i].x,obs[i].y,this.x,this.y - 1) < 0.1 && !obs[i].special && obs[i].type == "rock"){
-                  this.dir = 2;
-                }
-              } else if(this.dir == 2){
-                if(dist(obs[i].x,obs[i].y,this.x + 1,this.y) < 0.1 && !obs[i].special && obs[i].type == "rock"){
-                  this.dir = 3;
-                }
-              } else if(this.dir == 3){
-                if(dist(obs[i].x,obs[i].y,this.x,this.y + 1) < 0.1 && !obs[i].special && obs[i].type == "rock"){
-                  this.dir = 4;
-                }
-              } else if(this.dir == 4){
-                if(dist(obs[i].x,obs[i].y,this.x - 1,this.y) < 0.1 && !obs[i].special && obs[i].type == "rock"){
-                  this.dir = 1;
-                }
-              }
-            }
           } else {
             if(round(this.y * 100) % 100 == 0 && round(this.x * 100) % 100 == 0){
               maze = [];
