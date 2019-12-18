@@ -288,6 +288,57 @@ class LevelSelect{
         obs.push(new Obstacle("drg",4,9));
         obs.push(new Obstacle("drg",10,10));
       break; // ----------------------------------------------------------------------------
+      case 6:
+        snowBlockArray[3][3].fill = false;
+        snowBlockArray[3][3].right = false;
+        snowBlockArray[4][3].left = false;
+        snowBlockArray[4][3].fill = false;
+        snowBlockArray[4][3].right = false;
+        snowBlockArray[5][3].left = false;
+        snowBlockArray[5][3].fill = false;
+        
+        snowBlockArray[9][8].fill = false;
+        snowBlockArray[9][8].right = false;
+        snowBlockArray[10][8].left = false;
+        snowBlockArray[10][8].fill = false;
+        snowBlockArray[10][8].right = false;
+        snowBlockArray[11][8].left = false;
+        snowBlockArray[11][8].fill = false;
+        
+        snowBlockArray[1][9].fill = false;
+        snowBlockArray[1][9].right = false;
+        snowBlockArray[2][9].left = false;
+        snowBlockArray[2][9].fill = false;
+        snowBlockArray[2][9].right = false;
+        snowBlockArray[3][9].left = false;
+        snowBlockArray[3][9].fill = false;
+        
+        snowBlockArray[5][11].fill = false;
+        snowBlockArray[5][11].right = false;
+        snowBlockArray[6][11].left = false;
+        snowBlockArray[6][11].fill = false;
+        snowBlockArray[6][11].right = false;
+        snowBlockArray[7][11].left = false;
+        snowBlockArray[7][11].fill = false;
+        
+        snowBlockArray[2][5].fill = false;
+        snowBlockArray[2][5].down = false;
+        snowBlockArray[2][6].up = false;
+        snowBlockArray[2][6].fill = false;
+        snowBlockArray[2][6].down = false;
+        snowBlockArray[2][7].up = false;
+        snowBlockArray[2][7].fill = false;
+        
+        obs.push(new Obstacle("rock",6,9));
+        obs.push(new Obstacle("rock",2,11));
+        obs.push(new Obstacle("rock",10,6));
+        obs.push(new Obstacle("rock",7,2));
+        obs.push(new Obstacle("puf",5,3));
+        obs.push(new Obstacle("drg",9,8));
+        obs.push(new Obstacle("drg",7,11));
+        obs.push(new Obstacle("drg",3,9));
+        obs.push(new Obstacle("drg",2,5));
+      break;
       case 7:
         snowBlockArray[9][3].fill = false;
         snowBlockArray[9][3].right = false;
@@ -785,6 +836,52 @@ class LevelSelect{
         obs.push(new Obstacle("drg",3,7));
         obs.push(new Obstacle("drg",5,9));
         obs.push(new Obstacle("drg",7,9));
+      break;
+      case 16:
+        snowBlockArray[9][3].fill = false;
+        snowBlockArray[9][3].right = false;
+        snowBlockArray[10][3].left = false;
+        snowBlockArray[10][3].fill = false;
+        snowBlockArray[10][3].right = false;
+        snowBlockArray[11][3].left = false;
+        snowBlockArray[11][3].fill = false;
+        
+        snowBlockArray[2][9].fill = false;
+        snowBlockArray[2][9].right = false;
+        snowBlockArray[3][9].left = false;
+        snowBlockArray[3][9].fill = false;
+        snowBlockArray[3][9].right = false;
+        snowBlockArray[4][9].left = false;
+        snowBlockArray[4][9].fill = false;
+        
+        snowBlockArray[8][11].fill = false;
+        snowBlockArray[8][11].right = false;
+        snowBlockArray[9][11].left = false;
+        snowBlockArray[9][11].fill = false;
+        snowBlockArray[9][11].right = false;
+        snowBlockArray[10][11].left = false;
+        snowBlockArray[10][11].fill = false;
+        
+        snowBlockArray[5][2].fill = false;
+        snowBlockArray[5][2].down = false;
+        snowBlockArray[5][3].up = false;
+        snowBlockArray[5][3].fill = false;
+        snowBlockArray[5][3].down = false;
+        snowBlockArray[5][4].up = false;
+        snowBlockArray[5][4].fill = false;
+        
+        obs.push(new Obstacle("rock",11,10));
+        obs.push(new Obstacle("rock",12,6));
+        obs.push(new Obstacle("rock",8,2));
+        obs.push(new Obstacle("rock",1,5));
+        obs.push(new Obstacle("puf",9,3));
+        obs.push(new Obstacle("puf",5,2));
+        obs.push(new Obstacle("puf",5,3));
+        obs.push(new Obstacle("puf",3,9));
+        obs.push(new Obstacle("puf",6,7));
+        obs.push(new Obstacle("drg",9,11));
+        obs.push(new Obstacle("drg",10,3));
+        obs.push(new Obstacle("drg",4,9));
       break;
       default:
         //level 1 code
