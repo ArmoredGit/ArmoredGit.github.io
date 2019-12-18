@@ -16,6 +16,16 @@ class Player  {
       rect((width / 18 * i) + (height / 144), (17 * height / 18) + (width / 144), (6 * width / 144), (6 * height / 144));
     }
     stroke(0);
+    fill(255);
+    if(this.dir == 1){
+      ellipse((width / 18 * this.x) + (height / 36), (2 * height / 18) + (height / 18 * this.y) + (width / 36) - (width / 72), (width / 72), (height / 72));
+    } else if(this.dir == 2){
+      ellipse((width / 18 * this.x) + (height / 36) + (width / 72), (2 * height / 18) + (height / 18 * this.y) + (width / 36), (width / 72), (height / 72));
+    } else if(this.dir == 3){
+      ellipse((width / 18 * this.x) + (height / 36), (2 * height / 18) + (height / 18 * this.y) + (width / 36) + (width / 72), (width / 72), (height / 72));
+    } else if(this.dir == 4){
+      ellipse((width / 18 * this.x) + (height / 36) - (width / 72), (2 * height / 18) + (height / 18 * this.y) + (width / 36), (width / 72), (height / 72));
+    }
   }
   
   move(direction){
