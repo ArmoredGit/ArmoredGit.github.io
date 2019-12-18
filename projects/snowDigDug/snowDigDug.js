@@ -18,6 +18,8 @@ var QR;
 var hint;
 var HighScore;
 var onUp;
+var skip;
+var skipTen;
 
 //https://i1.wp.com/www.edcollins.com/digdug/digdug-grid.gif image of dig dug game
 //DigDug functions: http://www.edcollins.com/digdug/#:~:targetText=You%20score%20more%20points%20if,it%2C%20squashing%20it%20to%20death.
@@ -29,6 +31,8 @@ function setup() {
   scoreBoard=new ScoreBoard();
   HighScore = 1000;
   onUp = 0;
+  skip = false;
+  skipTen = false;
   player1 = new Player(6,7);
   QR = loadImage("/projects/snowDigDug/pics/qr-code.png");
   hint = loadImage("/projects/snowDigDug/pics/ins.png");
@@ -56,6 +60,7 @@ function GameEnd() {
 
 
 function draw() {
+  print(Number(keyCode));
   if(playing){
     background(31, 17, 120);
     noStroke();
@@ -432,6 +437,31 @@ function keyPressed() {
   } else {
     moving=true;
     attacking = false;
+  }
+  if(skipTen && Number(keyCode) - 48 < 10 && Number(keyCode) - 48 > 0){
+    playing = true;
+    levels.setLevel(Number(keyCode) - 48 + 10);
+    levels.resetLevel();
+    skip = false;
+    skipTen = false;
+    print("4");
+  }
+  if(Number(keyCode) - 48 == 0){
+    skip = false;
+    skipTen = true;
+    print("3");
+  }
+  if(skip && Number(keyCode) - 48 < 10 && Number(keyCode) - 48 > 0){
+    playing = true;
+    levels.setLevel(Number(keyCode) - 48);
+    levels.resetLevel();
+    skip = false;
+    skipTen = false;
+    print("2");
+  }
+  if(key == '`'){
+    skip = true;
+    print("1");
   }
 }
 
