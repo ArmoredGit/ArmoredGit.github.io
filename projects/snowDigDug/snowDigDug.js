@@ -100,19 +100,36 @@ function draw() {
     }
     
     //calls to movement
+    //if((keyCode==UP_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+      //player1.move(1);
+      //started=true;
+      //attacking = false;
+    //} else if ((keyCode==DOWN_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+      //player1.move(3);
+      //started=true;
+      //attacking = false;
+    //} else if ((keyCode==LEFT_ARROW ||  (mouseX > (14 * width / 18) && mousePressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+      //player1.move(4);
+      //started=true;
+      //attacking = false;
+    //} else if ((keyCode==RIGHT_ARROW ||  (mouseX > (14 * width / 18) && mousePressed && mouseY > (14 * height / 18) + (width / 144) + (width / 36) && mouseY < (14 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+     //player1.move(2);
+      //started=true;
+      //attacking = false;
+    //}
     if((keyCode==UP_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (5 * height / 18) + (width / 144) + (width / 36) && mouseY < (5 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(1);
       started=true;
       attacking = false;
-    } else if ((keyCode==DOWN_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    } else if ((keyCode==DOWN_ARROW || (mouseX > (14 * width / 18) && mousePressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(3);
       started=true;
       attacking = false;
-    } else if ((keyCode==LEFT_ARROW ||  (mouseX > (14 * width / 18) && mousePressed && mouseY > (11 * height / 18) + (width / 144) + (width / 36) && mouseY < (11 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    } else if ((keyCode==LEFT_ARROW ||  (mouseX > (14 * width / 18) && mouseX < ((14 * width / 18) + (11 * width / 144)) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(4);
       started=true;
       attacking = false;
-    } else if ((keyCode==RIGHT_ARROW ||  (mouseX > (14 * width / 18) && mousePressed && mouseY > (14 * height / 18) + (width / 144) + (width / 36) && mouseY < (14 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
+    } else if ((keyCode==RIGHT_ARROW ||  (mouseX > ((14 * width / 18) + (11 * width / 144)) && mousePressed && mouseY > (8 * height / 18) + (width / 144) + (width / 36) && mouseY < (8 * height / 18) + (width / 144) + (width / 36) + (22 * height / 144))) && moving){
       player1.move(2);
       started=true;
       attacking = false;
@@ -232,17 +249,17 @@ function draw() {
     stroke(255);
     image(QR,(width / 18 * 14) + (height / 144) + (width / 36), (2 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (10 * width / 144), (22 * height / 144));
+    rect((width / 18 * 14) + (height / 144) + (width / 36) + (12 * width / 144), (8 * height / 18) + (width / 144) + (width / 36), (10 * width / 144), (22 * height / 144));
     rect((width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    rect((width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     stroke(0);
     fill(0);
     textSize(height / 18);
     textAlign(CENTER,CENTER);
     text("^",(width / 18 * 14) + (height / 144) + (width / 36), (5 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text("v",(width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text("<",(width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
-    text(">",(width / 18 * 14) + (height / 144) + (width / 36), (14 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
+    text("<",(width / 18 * 14) + (height / 144) + (width / 36), (8 * height / 18) + (width / 144) + (width / 36), (10 * width / 144), (22 * height / 144));
+    text(">",(width / 18 * 14) + (height / 144) + (width / 36) + (12 * width / 144), (8 * height / 18) + (width / 144) + (width / 36), (10 * width / 144), (22 * height / 144));
+    text("v",(width / 18 * 14) + (height / 144) + (width / 36), (11 * height / 18) + (width / 144) + (width / 36), (22 * width / 144), (22 * height / 144));
     
     //lower info pannel
     textAlign(RIGHT);
