@@ -37,7 +37,6 @@ class LevelSelect{
   
   resetLevel(){
     timer=0;
-    snowflakeArray = [];
     snowBlockArray = [];
     obs = [];
     exp = [];
@@ -50,16 +49,6 @@ class LevelSelect{
         maze[i][j] = false;
       }
     }
-    for(let i = 0; i < 200;i++){
-      snowflakeArray[i]= new Snow();
-    }
-    for(let i = 200; i<300; i++){
-      snowflakeArray[i]= new RedSnow();
-    }
-    for(let i = 300; i<400; i++){
-      snowflakeArray[i]= new GreenSnow();
-    }
-    
     for(let i = 0; i < 14;i++){
       snowBlockArray[i] = [];
       for(let j = 0; j < 15;j++){
