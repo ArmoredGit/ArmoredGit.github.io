@@ -9,16 +9,28 @@ class LevelSelect{
 
   drawTrees(){
     if(this.level < 11){
-      for(let i = 1; i <= this.level; i++){
+      for(let i = 1; i <= this.level; i++){//139,69,19
+        fill(139,69,19);
+        rect((14 * width/18) - (i * width/18) + (width/36) - (width/144),(5*height/36),width/72,height/18);
         fill(0,255,0);
-        triangle((14 * width/18) - (i * width/18) + (width/36),(2*height/18),(14 * width/18) - (i * width/18),(3*height/18),(15 * width/18) - (i * width/18),(3*height/18));
+        triangle((14 * width/18) - (i * width/18) + (width/36),(2*height/18),(14 * width/18) - (i * width/18) + (height/72),(3*height/18) - (2*height/144),(15 * width/18) - (i * width/18) - (height/72),(3*height/18) - (2*height/144));
+        triangle((14 * width/18) - (i * width/18) + (width/36),(2*height/18),(14 * width/18) - (i * width/18) + (height/72),(3*height/18) - (3*height/144),(15 * width/18) - (i * width/18) - (height/72),(3*height/18) - (3*height/144));
+        triangle((14 * width/18) - (i * width/18) + (width/36),(2*height/18),(14 * width/18) - (i * width/18) + (height/72),(3*height/18) - (4*height/144),(15 * width/18) - (i * width/18) - (height/72),(3*height/18) - (4*height/144));
       }
     }else{
+      fill(218,165,32);
+      rect((14 * width/18) - (width/18) + (width/36) - (width/144),(5*height/36),width/72,height/18);
       fill(255,255,0);
-      triangle((14 * width/18) - (1 * width/18) + (width/36),(2*height/18),(14 * width/18) - (1 * width/18),(3*height/18),(15 * width/18) - (1 * width/18),(3*height/18));
+      triangle((14 * width/18) - (width/18) + (width/36),(2*height/18),(14 * width/18) - (width/18) + (height/72),(3*height/18) - (2*height/144),(15 * width/18) - (width/18) - (height/72),(3*height/18) - (2*height/144));
+      triangle((14 * width/18) - (width/18) + (width/36),(2*height/18),(14 * width/18) - (width/18) + (height/72),(3*height/18) - (3*height/144),(15 * width/18) - (width/18) - (height/72),(3*height/18) - (3*height/144));
+      triangle((14 * width/18) - (width/18) + (width/36),(2*height/18),(14 * width/18) - (width/18) + (height/72),(3*height/18) - (4*height/144),(15 * width/18) - (width/18) - (height/72),(3*height/18) - (4*height/144));
       for(let i = 1; i <= this.level%10; i++){
+        fill(139,69,19);
+        rect((13 * width/18) - (i * width/18) + (width/36) - (width/144),(5*height/36),width/72,height/18);
         fill(0,255,0);
-        triangle((13 * width/18) - (i * width/18) + (width/36),(2*height/18),(13 * width/18) - (i * width/18),(3*height/18),(14 * width/18) - (i * width/18),(3*height/18));
+        triangle((13 * width/18) - (i * width/18) + (width/36),(2*height/18),(13 * width/18) - (i * width/18) + (height/72),(3*height/18) - (2*height/144),(14 * width/18) - (i * width/18) - (height/72),(3*height/18) - (2*height/144));
+        triangle((13 * width/18) - (i * width/18) + (width/36),(2*height/18),(13 * width/18) - (i * width/18) + (height/72),(3*height/18) - (3*height/144),(14 * width/18) - (i * width/18) - (height/72),(3*height/18) - (3*height/144));
+        triangle((13 * width/18) - (i * width/18) + (width/36),(2*height/18),(13 * width/18) - (i * width/18) + (height/72),(3*height/18) - (4*height/144),(14 * width/18) - (i * width/18) - (height/72),(3*height/18) - (4*height/144));
       }
     }
   }
