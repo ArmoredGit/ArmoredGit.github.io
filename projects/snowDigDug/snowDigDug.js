@@ -40,16 +40,6 @@ function setup() {
   levels = new LevelSelect(1);
   levels.resetLevel();
   playing = false;
-  snowflakeArray = [];
-  for(let i = 0; i < 200;i++){
-    snowflakeArray[i]= new Snow();
-  }
-  for(let i = 200; i<300; i++){
-    snowflakeArray[i]= new RedSnow();
-  }
-  for(let i = 300; i<400; i++){
-    snowflakeArray[i]= new GreenSnow();
-  }
 }
 
 function GameEnd() {
