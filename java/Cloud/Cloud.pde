@@ -4,9 +4,18 @@ String [] fileContents ;
 String rawText;
 String [] tokens;
 WordList wList;
+String [] fileContentsC;
+String rawTextC;
+String [] tokensC;
 
 void setup() {
   size(1600, 800);
+    fileContents = loadStrings("data/common.txt");
+    rawTextC = join(fileContents, " ");
+    rawTextC = rawTextC.toLowerCase();
+    tokensC = rawTextC.split("[^\\w]+");
+    println(tokensC.length);
+    
     fileContents = loadStrings("data/book.txt");
     rawText = join(fileContents, " ");
     rawText = rawText.toLowerCase();
@@ -18,17 +27,18 @@ void setup() {
       println(x.toString());
     }
     println(wList.myList.size());
+    
     noLoop();
 }
 
 void draw(){
-  background(255);
-  new WordCram(this)
-  .fromWebPage("http://www.gutenberg.org/files/35/35-0.txt")
-  .withColors(color(30), color(110), color(random(255), 240, 200))
-  .sizedByWeight(5, 120)
-  .withFont("Copse")
-  .drawAll();
+  //background(255);
+  //new WordCram(this)
+  //.fromWebPage("http://www.gutenberg.org/files/35/35-0.txt")
+  //.withColors(color(30), color(110), color(random(255), 240, 200))
+  //.sizedByWeight(5, 120)
+  //.withFont("Copse")
+  //.drawAll();
 }
 
 public class WordList {
@@ -55,9 +65,17 @@ public class WordList {
         j--;
       }
     }
-    int lengthRay = myList.size();//temp way of removing junk
-    for(int i = lengthRay-1; i > lengthRay-19; i--){
-      myList.remove(i);
+    int lengthRay = myList.size();//removing excess 
+    for(int i = lengthRay-1; i >= 0; i--){
+      boolean j = true;
+      for(String x : tokensC){
+        if(j){
+          if(myList.get(i).word.equals(x)){
+            myList.remove(i);
+            j = false;
+          }
+        }
+      }
     }
   }
   
