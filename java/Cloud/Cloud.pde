@@ -6,7 +6,7 @@ String [] tokens;
 WordList wList;
 
 void setup() {
-  size(400, 200);
+  size(1600, 800);
     fileContents = loadStrings("data/book.txt");
     rawText = join(fileContents, " ");
     rawText = rawText.toLowerCase();
@@ -18,14 +18,14 @@ void setup() {
       println(x.toString());
     }
     println(wList.myList.size());
+    noLoop();
 }
 
 void draw(){
   background(255);
   new WordCram(this)
-  .fromWebPage("https://en.wikipedia.org/wiki/Special:Random")
-  .withColors(color(30), color(110),
-              color(random(255), 240, 200))
+  .fromWebPage("http://www.gutenberg.org/files/35/35-0.txt")
+  .withColors(color(30), color(110), color(random(255), 240, 200))
   .sizedByWeight(5, 120)
   .withFont("Copse")
   .drawAll();
