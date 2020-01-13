@@ -15,7 +15,12 @@ void setup() {
   rawTextC = rawTextC.toLowerCase();
   tokensC = rawTextC.split("[^\\w]+");
   println(tokensC.length);
-  fileContents = loadStrings("data/book.txt");
+  do{
+    int book = (int)random(10000,60000);
+    fileContents = loadStrings("https://www.gutenberg.org/files/" + book + "/" + book + "-0.txt");
+  }while(fileContents == null);
+  //fileContents = loadStrings("data/book.txt"); 
+  //fileContents = loadStrings("https://en.wikipedia.org/wiki/Special:Random"); https://www.gutenberg.org/files/59991/59991-0.txt
   rawText = join(fileContents, " ");
   rawText = rawText.toLowerCase();
   tokens=rawText.split("[^\\w]+");   
@@ -24,29 +29,58 @@ void setup() {
   println(wList.myList.size());
   textAlign(CENTER,CENTER);
   rectMode(CENTER);
-  noLoop();
+  draw();
+  frameRate(1);
 }
 
 void draw(){
+  do{
+    int book = (int)random(10000,60000);
+    fileContents = loadStrings("https://www.gutenberg.org/files/" + book + "/" + book + "-0.txt");
+  }while(fileContents == null);
+  //fileContents = loadStrings("data/book.txt"); 
+  //fileContents = loadStrings("https://en.wikipedia.org/wiki/Special:Random"); https://www.gutenberg.org/files/59991/59991-0.txt
+  rawText = join(fileContents, " ");
+  rawText = rawText.toLowerCase();
+  tokens=rawText.split("[^\\w]+");   
+  println(tokens.length);
+  wList=new WordList(tokens);
+  println(wList.myList.size());
+  
+  
+  
+  
   background(0);
-  ArrayList<int[]> positions = new ArrayList<int[]>();
+  fill(255);
+  //ArrayList<int[]> positions = new ArrayList<int[]>();
   int numWordsShown = 100;
-  float heightFraction = 100/(wList.myList.get(wList.myList.size()-1).ocr - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr);
+  float heightFraction = 100/(wList.myList.get(wList.myList.size()-1).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0);
   for(int i = wList.myList.size()-1; i > wList.myList.size()-1-numWordsShown; i--){
     println(wList.myList.get(i).toString());
-    float angle = random(0,TWO_PI);
-    float posX = width/2;
-    float posY = height/2;
-    boolean goodPos = true;
-    for(int j = 0; j < positions.size();j++){
-      
-    }
+    //float angle = random(0,TWO_PI);
+    //float posX = width/2;
+    //float posY = height/2;
+    float posX = random(0,width);
+    float posY = random(0,height);
+    float WHeight = ((wList.myList.get(i).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0) * heightFraction) + 10;
+    float WWidth = WHeight * wList.myList.get(i).word.length();
+    //boolean goodPos = false;
+    //while(!goodPos){
+    //  for(int j = 0; j < positions.size();j++){
+    //    if(){//(posX - (WWidth/2) >= positions.get(j)[0]-positions.get(j)[1] && posX - (WWidth/2) <= positions.get(j)[0]+positions.get(j)[1] && posY >= positions.get(j)[0]-positions.get(j)[2] && posY <= positions.get(j)[0]+positions.get(j)[2])
+          
+    //    }
+    //  }
+    //}
+    fill(255);
+    textSize(WHeight);
+    text(wList.myList.get(i).word,posX,posY,WWidth*100,WHeight*100);
   }
   println(wList.myList.size());
   //new WordCram(this)
   //.fromWebPage("http://www.gutenberg.org/files/35/35-0.txt")
   //.withColors(color(30), color(110), color(random(255), 240, 200))
-  //.sizedByWeight(5, 120)
+  //.sizedByWeight(5, 150)
   //.withFont("Copse")
   //.drawAll();
 }
