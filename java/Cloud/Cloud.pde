@@ -15,14 +15,17 @@ void setup() {
   rawTextC = rawTextC.toLowerCase();
   tokensC = rawTextC.split("[^\\w]+");
   println(tokensC.length);
-  do{
-    int book = (int)random(10000,60000);
-    fileContents = loadStrings("https://www.gutenberg.org/files/" + book + "/" + book + "-0.txt");
-  }while(fileContents == null);
-  //fileContents = loadStrings("data/book.txt"); 
-  //fileContents = loadStrings("https://en.wikipedia.org/wiki/Special:Random"); https://www.gutenberg.org/files/59991/59991-0.txt
+  //do{
+  //  int book = (int)random(10000,61150);
+  //  fileContents = loadStrings("https://www.gutenberg.org/files/" + book + "/" + book + "-0.txt");
+  //}while(fileContents == null);
+  fileContents = loadStrings("data/book.txt"); 
+  //fileContents = loadStrings("https://en.wikipedia.org/wiki/Special:Random"); //https://www.gutenberg.org/files/59991/59991-0.txt
   rawText = join(fileContents, " ");
   rawText = rawText.toLowerCase();
+  //rawText.replaceAll("</p>.+<p>"," ");
+  //rawText.replaceAll(".+<p>"," ");
+  //rawText.replaceAll("</p>.+"," ");
   tokens=rawText.split("[^\\w]+");   
   println(tokens.length);
   wList=new WordList(tokens);
@@ -34,34 +37,19 @@ void setup() {
 }
 
 void draw(){
-  do{
-    int book = (int)random(10000,60000);
-    fileContents = loadStrings("https://www.gutenberg.org/files/" + book + "/" + book + "-0.txt");
-  }while(fileContents == null);
-  //fileContents = loadStrings("data/book.txt"); 
-  //fileContents = loadStrings("https://en.wikipedia.org/wiki/Special:Random"); https://www.gutenberg.org/files/59991/59991-0.txt
-  rawText = join(fileContents, " ");
-  rawText = rawText.toLowerCase();
-  tokens=rawText.split("[^\\w]+");   
-  println(tokens.length);
-  wList=new WordList(tokens);
-  println(wList.myList.size());
-  
-  
-  
-  
+  colorMode(HSB);
   background(0);
-  fill(255);
+  fill(0,0,255);
   //ArrayList<int[]> positions = new ArrayList<int[]>();
-  int numWordsShown = 100;
+  int numWordsShown = 1000;
   float heightFraction = 100/(wList.myList.get(wList.myList.size()-1).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0);
-  for(int i = wList.myList.size()-1; i > wList.myList.size()-1-numWordsShown; i--){
+  for(int i = wList.myList.size()-1-numWordsShown; i < wList.myList.size()-1; i++){
     println(wList.myList.get(i).toString());
     //float angle = random(0,TWO_PI);
     //float posX = width/2;
     //float posY = height/2;
-    float posX = random(0,width);
-    float posY = random(0,height);
+    float posX = random(100,width-100);
+    float posY = random(100,height-100);
     float WHeight = ((wList.myList.get(i).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0) * heightFraction) + 10;
     float WWidth = WHeight * wList.myList.get(i).word.length();
     //boolean goodPos = false;
@@ -72,7 +60,7 @@ void draw(){
     //    }
     //  }
     //}
-    fill(255);
+    fill(255*posX/(width-100),255*posY/(height-100),255*((wList.myList.get(i).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0) * heightFraction)/100);
     textSize(WHeight);
     text(wList.myList.get(i).word,posX,posY,WWidth*100,WHeight*100);
   }
