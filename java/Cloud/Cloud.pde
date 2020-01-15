@@ -9,7 +9,7 @@ String rawTextC;
 String [] tokensC;
 
 void setup() {
-  size(1600, 800);
+  size(960, 1080);
   fileContents = loadStrings("data/common.txt");
   rawTextC = join(fileContents, " ");
   rawTextC = rawTextC.toLowerCase();
@@ -41,7 +41,7 @@ void draw(){
   background(0);
   fill(0,0,255);
   //ArrayList<int[]> positions = new ArrayList<int[]>();
-  int numWordsShown = 1000;
+  int numWordsShown = 2000;
   float heightFraction = 100/(wList.myList.get(wList.myList.size()-1).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0);
   for(int i = wList.myList.size()-1-numWordsShown; i < wList.myList.size()-1; i++){
     println(wList.myList.get(i).toString());
