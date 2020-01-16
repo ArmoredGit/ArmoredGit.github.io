@@ -23,9 +23,6 @@ void setup() {
   //fileContents = loadStrings("https://en.wikipedia.org/wiki/Special:Random"); //https://www.gutenberg.org/files/59991/59991-0.txt
   rawText = join(fileContents, " ");
   rawText = rawText.toLowerCase();
-  //rawText.replaceAll("</p>.+<p>"," ");
-  //rawText.replaceAll(".+<p>"," ");
-  //rawText.replaceAll("</p>.+"," ");
   tokens=rawText.split("[^\\w]+");   
   println(tokens.length);
   wList=new WordList(tokens);
@@ -41,9 +38,9 @@ void draw(){
   background(0);
   fill(0,0,255);
   //ArrayList<int[]> positions = new ArrayList<int[]>();
-  int numWordsShown = 2000;
+  int numWordsShown = 1000;
   float heightFraction = 100/(wList.myList.get(wList.myList.size()-1).ocr * 1.0 - wList.myList.get(wList.myList.size()-1-numWordsShown).ocr * 1.0);
-  for(int i = wList.myList.size()-1-numWordsShown; i < wList.myList.size()-1; i++){
+  for(int i = wList.myList.size()-1-numWordsShown; i < wList.myList.size(); i++){
     println(wList.myList.get(i).toString());
     //float angle = random(0,TWO_PI);
     //float posX = width/2;
