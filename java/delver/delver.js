@@ -90,12 +90,7 @@ class Map {
     textSize(Ind);
     for (let i = 0; i <= 50; i++) {
       for (let j = 0; j <= 50; j++) {
-        fill(0,0,(100/dist(i, j, this.findPlayer().i, this.findPlayer().j)));
-        //if(round(j)%2 == 0){
-        //  fill((i*10)%255, 40, (100/dist(i, j, this.findPlayer().i, this.findPlayer().j)));
-        //} else {
-        //  fill((i*10)%255, 220, (100/dist(i, j, this.findPlayer().i, this.findPlayer().j)));
-        //}
+        fill((Ind*(i+10-this.findPlayer().i)/width*255),40,(100/dist(i, j, this.findPlayer().i, this.findPlayer().j)));
         text(this.map[i][j].toChar(i, j), Ind*(i+10-this.findPlayer().i), Ind*(j+10-this.findPlayer().j));
       }
     }
