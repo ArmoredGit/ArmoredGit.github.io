@@ -92,7 +92,7 @@ function draw()
       this.count++;
     }
   }
-  if (count > 1) {
+  if (count > random([0,1,2,])) {
     dice[dieCur].maze = true;
     dice[dieCur].wall = true;
   } else {
